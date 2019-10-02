@@ -114,6 +114,8 @@
         <DCCReference Include="dbrtl.dcp"/>
         <DCCReference Include="DOSCommandDD.dcp"/>
         <DCCReference Include="DOSCommandDR.dcp"/>
+        <DCCReference Include="dxCoreRS26.dcp"/>
+        <DCCReference Include="dxGDIPlusRS26.dcp"/>
         <DCCReference Include="src\Horse.CodeGen.NewHorseProject.pas"/>
         <DCCReference Include="src\Horse.CodeGen.NewProject.pas"/>
         <DCCReference Include="src\Horse.CodeGen.NewUnit.pas"/>
@@ -126,8 +128,8 @@
         <DCCReference Include="src\Horse.Registration.pas"/>
         <DCCReference Include="src\Horse.Splash.Registration.pas"/>
         <DCCReference Include="src\Horse.Boss.Initializer.pas"/>
-        <DCCReference Include="src\Horse.Boss.View.pas">
-            <Form>FormBossView</Form>
+        <DCCReference Include="src\Horse.Views.Boss.pas">
+            <Form>FrmBoss</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

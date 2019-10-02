@@ -1,7 +1,6 @@
 package horse_wizard;
 
 {$R *.res}
-{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -39,7 +38,9 @@ requires
   IndyCore,
   dbrtl,
   DOSCommandDD,
-  DOSCommandDR;
+  DOSCommandDR,
+  dxCoreRS26,
+  dxGDIPlusRS26;
 
 contains
   Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',
@@ -47,11 +48,11 @@ contains
   Horse.CodeGen.NewUnit in 'src\Horse.CodeGen.NewUnit.pas',
   Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
   Horse.CodeGen.Templates in 'src\Horse.CodeGen.Templates.pas',
-  Horse.Views.Wizard in 'src\Horse.Views.Wizard.pas' { FrmNewProject } ,
+  Horse.Views.Wizard in 'src\Horse.Views.Wizard.pas' {FrmNewProject},
   Horse.ProjectWizardEx in 'src\Horse.ProjectWizardEx.pas',
   Horse.Registration in 'src\Horse.Registration.pas',
   Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
-  Horse.Boss.View in 'src\Horse.Boss.View.pas' { FormBossView };
+  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss};
 
 end.

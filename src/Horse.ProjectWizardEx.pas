@@ -12,15 +12,12 @@ type
 
 implementation
 
-uses
-  Horse.Boss.Initializer, DccStrs, System.IOUtils, VCL.Controls, VCL.Forms, WinApi.Windows, System.SysUtils, Horse.Views.Wizard,
-  Horse.CodeGen.NewHorseProject, ExpertsRepository;
+uses Horse.Boss.Initializer, DccStrs, System.IOUtils, VCL.Controls, VCL.Forms, WinApi.Windows, System.SysUtils,
+  Horse.Views.Wizard, Horse.CodeGen.NewHorseProject, ExpertsRepository;
 
 resourcestring
   sNewHorseProjectCaption = 'Horse Project';
   sNewHorseProjectHint = 'Create a new project';
-
-{ THorseNewProjectWizard }
 
 class procedure THorseNewProjectWizard.RegisterHorseProjectWizard(const APersonality: string);
 begin

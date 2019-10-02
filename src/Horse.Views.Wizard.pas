@@ -3,7 +3,8 @@ unit Horse.Views.Wizard;
 interface
 
 uses WinAPI.Windows, WinAPI.Messages, WinAPI.ShellAPI, System.SysUtils, System.Variants, System.Classes, VCL.Graphics,
-  VCL.Controls, VCL.Forms, VCL.Dialogs, VCL.StdCtrls, VCL.Imaging.pngimage, VCL.ExtCtrls;
+  VCL.Controls, VCL.Forms, VCL.Dialogs, VCL.StdCtrls, VCL.Imaging.pngimage, VCL.ExtCtrls,
+  dxGDIPlusClasses;
 
 type
   TFrmNewProject = class(TForm)
@@ -28,9 +29,6 @@ type
     property AddToProjectGroup: Boolean read GetAddToProjectGroup;
     property MiddlewareList: TStringList read GetMiddlewareList;
   end;
-
-var
-  FrmNewProject: TFrmNewProject;
 
 implementation
 

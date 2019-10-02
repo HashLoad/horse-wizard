@@ -2,15 +2,13 @@ unit Horse.Boss.Initializer;
 
 interface
 
-uses
-  ToolsAPI, System.Classes;
+uses ToolsAPI, System.Classes;
 
 type
   THorseBossInitializer = class
   private
     FProject: IOTAProject;
     FModules: TStringList;
-
     function GetDependencies: string;
     procedure RunBossInstall;
   public
@@ -20,28 +18,25 @@ type
 
 implementation
 
-uses
-  System.SysUtils, System.IOUtils, DosCommand, Horse.Boss.View;
+uses System.SysUtils, System.IOUtils, DosCommand, Horse.Views.Boss;
+
 const
   HORSE_MODULE = 'github.com/HashLoad/horse';
-
   BOSS_COMMAND = 'boss install';
   BOSS_MODULE_DEFAULT = '"%s": ">0.0.0"';
   BOSS_NAME = 'boss.json';
-  BOSS_BASE = '{' + sLineBreak +
-              '  "name": "%s",' + sLineBreak +
-              '  "description": "",' + sLineBreak +
-              '  "version": "1.0.0",' + sLineBreak +
-              '  "homepage": "",' + sLineBreak +
-              '  "mainsrc": "./",' + sLineBreak +
-              '  "projects": [],' + sLineBreak +
-              '  "dependencies": {' + sLineBreak +
-              '    %s' +
-              '  }' +
-              '}';
-
-
-{ THorseBossInitializer }
+  BOSS_BASE =
+    '{' + sLineBreak +
+    '  "name": "%s",' + sLineBreak +
+    '  "description": "",' + sLineBreak +
+    '  "version": "1.0.0",' + sLineBreak +
+    '  "homepage": "",' + sLineBreak +
+    '  "mainsrc": "./",' + sLineBreak +
+    '  "projects": [],' + sLineBreak +
+    '  "dependencies": {' + sLineBreak +
+    '    %s' + sLineBreak +
+    '  }' + sLineBreak +
+    '}';
 
 constructor THorseBossInitializer.Create(AProject: IOTAProject; AModules: TStringList);
 begin
@@ -82,17 +77,16 @@ begin
   end;
 
   LList := LList + Format(BOSS_MODULE_DEFAULT, [HORSE_MODULE]);
-
   Result := LList;
 end;
 
 procedure THorseBossInitializer.RunBossInstall;
 var
   LDosCommand: TDosCommand;
-  LBossView: TFormBossView;
+  LBossView: TFrmBoss;
 begin
   LDosCommand := TDosCommand.Create(nil);
-  LBossView := TFormBossView.Create(nil);
+  LBossView := TFrmBoss.Create(nil);
   LDosCommand.OnNewLine := procedure(ASender: TObject; const ANewLine: string; AOutputType: TOutputType)
     begin
       LBossView.AppendText(ANewLine);
