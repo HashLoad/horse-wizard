@@ -5,7 +5,7 @@
 		"github.com/hashload/doscommand": {
 			"name": "doscommand",
 			"version": "1.0.3",
-			"hash": "38b912add940d337015d48aad18c70c0",
+			"hash": "3a7db3d2b9ddc9b6f407e4c493e39953",
 			"artifacts": {
 				"dcp": [
 					"DOSCommandDD.bpi",

@@ -1,6 +1,7 @@
 package horse_wizard;
 
 {$R *.res}
+{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -37,10 +38,10 @@ requires
   IndyProtocols,
   IndyCore,
   dbrtl,
-  DOSCommandDD,
-  DOSCommandDR,
   dxCoreRS26,
-  dxGDIPlusRS26;
+  dxGDIPlusRS26,
+  DOSCommandDD,
+  DOSCommandDR;
 
 contains
   Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',

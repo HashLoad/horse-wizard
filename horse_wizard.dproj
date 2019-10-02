@@ -112,10 +112,10 @@
         <DCCReference Include="IndyProtocols.dcp"/>
         <DCCReference Include="IndyCore.dcp"/>
         <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="DOSCommandDD.dcp"/>
-        <DCCReference Include="DOSCommandDR.dcp"/>
         <DCCReference Include="dxCoreRS26.dcp"/>
         <DCCReference Include="dxGDIPlusRS26.dcp"/>
+        <DCCReference Include="DOSCommandDD.dcp"/>
+        <DCCReference Include="DOSCommandDR.dcp"/>
         <DCCReference Include="src\Horse.CodeGen.NewHorseProject.pas"/>
         <DCCReference Include="src\Horse.CodeGen.NewProject.pas"/>
         <DCCReference Include="src\Horse.CodeGen.NewUnit.pas"/>
@@ -132,6 +132,14 @@
             <Form>FrmBoss</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <RcItem Include="src\HashloadIcon.ico">
+            <ResourceType>ICON</ResourceType>
+            <ResourceId>HashloadIcon</ResourceId>
+        </RcItem>
+        <RcItem Include="src\HashloadSplash.bmp">
+            <ResourceType>BITMAP</ResourceType>
+            <ResourceId>HashloadSplash</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
