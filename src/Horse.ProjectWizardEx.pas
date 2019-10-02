@@ -12,7 +12,8 @@ type
 
 implementation
 
-uses DccStrs, System.IOUtils, VCL.Controls, VCL.Forms, WinApi.Windows, System.SysUtils, Horse.Views.Wizard,
+uses
+  Horse.Boss.Initializer, DccStrs, System.IOUtils, VCL.Controls, VCL.Forms, WinApi.Windows, System.SysUtils, Horse.Views.Wizard,
   Horse.CodeGen.NewHorseProject, ExpertsRepository;
 
 resourcestring
@@ -34,6 +35,7 @@ begin
       LProject: IOTAProject;
       LBuildConfiguration: IOTABuildConfiguration;
       LProjectSourceCreator: IOTACreator;
+      LBossInitializer: THorseBossInitializer;
     begin
       LWizardForm := TFrmNewProject.Create(Application);
       try
@@ -53,6 +55,17 @@ begin
           LBuildConfiguration := (LProject.ProjectOptions as IOTAProjectOptionsConfigurations).BaseConfiguration;
           LBuildConfiguration.SetValue(sUnitSearchPath, '$(Horse)');
           LBuildConfiguration.SetValue(sFramework, 'VCL');
+
+          if LProject.Save(True, True) then
+          begin
+            LBossInitializer := THorseBossInitializer.Create(LProject, LWizardForm.MiddlewareList);
+            try
+              LBossInitializer.Generate;
+            finally
+              LBossInitializer.Free;
+            end;
+          end;
+
         end;
       finally
         LWizardForm.Free;
