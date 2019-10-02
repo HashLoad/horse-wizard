@@ -1,0 +1,11 @@
+{
+	"name": "horse-wizard",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "src/",
+	"projects": [],
+	"dependencies": {
+		"github.com/hashload/doscommand": "^1.0.3"
+	}
+}
