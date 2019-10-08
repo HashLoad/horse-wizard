@@ -113,8 +113,6 @@
         <DCCReference Include="IndyProtocols.dcp"/>
         <DCCReference Include="IndyCore.dcp"/>
         <DCCReference Include="dbrtl.dcp"/>
-        <DCCReference Include="dxCoreRS26.dcp"/>
-        <DCCReference Include="dxGDIPlusRS26.dcp"/>
         <DCCReference Include="DOSCommandDD.dcp"/>
         <DCCReference Include="DOSCommandDR.dcp"/>
         <DCCReference Include="src\Horse.CodeGen.NewHorseProject.pas"/>

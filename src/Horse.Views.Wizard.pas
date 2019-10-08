@@ -3,8 +3,7 @@ unit Horse.Views.Wizard;
 interface
 
 uses WinAPI.Windows, WinAPI.Messages, WinAPI.ShellAPI, System.SysUtils, System.Variants, System.Classes, VCL.Graphics,
-  VCL.Controls, VCL.Forms, VCL.Dialogs, VCL.StdCtrls, VCL.Imaging.pngimage, VCL.ExtCtrls,
-  dxGDIPlusClasses;
+  VCL.Controls, VCL.Forms, VCL.Dialogs, VCL.StdCtrls, VCL.Imaging.pngimage, VCL.ExtCtrls;
 
 type
   TFrmNewProject = class(TForm)

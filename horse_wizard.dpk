@@ -38,10 +38,8 @@ requires
   IndyProtocols,
   IndyCore,
   dbrtl,
-  dxCoreRS26,
-  dxGDIPlusRS26,
-  DOSCommandDD,
-  DOSCommandDR;
+  DOSCommandDD{BOSS},
+  DOSCommandDR{BOSS};
 
 contains
   Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',
@@ -55,6 +53,5 @@ contains
   Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
   Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss};
-
 
 end.
