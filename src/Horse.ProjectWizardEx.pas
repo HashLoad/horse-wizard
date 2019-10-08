@@ -61,8 +61,8 @@ begin
             finally
               LBossInitializer.Free;
             end;
+            LProject.Show;
           end;
-
         end;
       finally
         LWizardForm.Free;

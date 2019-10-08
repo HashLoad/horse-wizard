@@ -2,10 +2,10 @@ object FrmBoss: TFrmBoss
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMaximize]
-  BorderStyle = bsDialog
+  BorderStyle = bsNone
   Caption = 'Boss'
-  ClientHeight = 420
-  ClientWidth = 872
+  ClientHeight = 400
+  ClientWidth = 700
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,16 +20,18 @@ object FrmBoss: TFrmBoss
   object MemoOut: TMemo
     Left = 0
     Top = 0
-    Width = 872
-    Height = 420
+    Width = 700
+    Height = 400
     Align = alClient
     Color = 986895
-    Font.Charset = DEFAULT_CHARSET
+    Font.Charset = ANSI_CHARSET
     Font.Color = 15790320
-    Font.Height = -16
-    Font.Name = 'Roboto'
+    Font.Height = -13
+    Font.Name = 'Script'
     Font.Style = []
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 878
+    ExplicitHeight = 449
   end
 end
