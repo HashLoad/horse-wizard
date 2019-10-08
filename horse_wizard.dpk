@@ -56,4 +56,5 @@ contains
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
   Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss};
 
+
 end.
