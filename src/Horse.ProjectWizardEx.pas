@@ -58,6 +58,7 @@ begin
             LBossInitializer := THorseBossInitializer.Create(LProject, LWizardForm.MiddlewareList);
             try
               LBossInitializer.Generate;
+              LBossInitializer.Wait;
             finally
               LBossInitializer.Free;
             end;
