@@ -17,6 +17,6 @@ resourcestring
 
 initialization
   bmSplashScreen := LoadBitmap(HInstance, 'HashloadSplash');
-  (SplashScreenServices as IOTASplashScreenServices).AddPluginBitmap(resPackageName, bmSplashScreen, False, resLicense);
+  (SplashScreenServices as IOTASplashScreenServices).AddPluginBitmap(resPackageName, bmSplashScreen);
 
 end.

@@ -2,8 +2,7 @@ unit Horse.Boss.Initializer;
 
 interface
 
-uses
-  ToolsAPI, System.Classes;
+uses ToolsAPI, System.Classes;
 
 type
   THorseBossInitializer = class
@@ -11,7 +10,6 @@ type
     FProject: IOTAProject;
     FModules: TStringList;
     FLocked: Boolean;
-
     function GetDependencies: string;
     procedure RunBossInstall;
     procedure ReloadProject;
@@ -23,11 +21,10 @@ type
 
 implementation
 
-uses
-  System.SysUtils, System.IOUtils, DosCommand, Horse.Boss.View, Vcl.Forms;
+uses System.SysUtils, System.IOUtils, DosCommand, Horse.Views.Boss, Vcl.Forms;
+
 const
   HORSE_MODULE = 'github.com/HashLoad/horse';
-
   BOSS_COMMAND = 'boss install';
   BOSS_MODULE_DEFAULT = '"%s": ">0.0.0"';
   BOSS_NAME = 'boss.json';
@@ -40,10 +37,9 @@ const
     '  "mainsrc": "./",' + sLineBreak +
     '  "projects": [],' + sLineBreak +
     '  "dependencies": {' + sLineBreak +
-    '    %s' +
-    '  }' +
+    '    %s' + sLineBreak +
+    '  }' + sLineBreak +
     '}';
-
 
 { THorseBossInitializer }
 
@@ -87,7 +83,6 @@ begin
   end;
 
   LList := LList + Format(BOSS_MODULE_DEFAULT, [HORSE_MODULE]);
-
   Result := LList;
 end;
 
@@ -99,10 +94,10 @@ end;
 procedure THorseBossInitializer.RunBossInstall;
 var
   LDosCommand: TDosCommand;
-  LBossView: TFormBossView;
+  LBossView: TFrmBoss;
 begin
   LDosCommand := TDosCommand.Create(nil);
-  LBossView := TFormBossView.Create(nil);
+  LBossView := TFrmBoss.Create(nil);
   LDosCommand.OnNewLine := procedure(ASender: TObject; const ANewLine: string; AOutputType: TOutputType)
     begin
       LBossView.AppendText(ANewLine);

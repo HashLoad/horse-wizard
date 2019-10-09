@@ -29,9 +29,6 @@ type
     property MiddlewareList: TStringList read GetMiddlewareList;
   end;
 
-var
-  FrmNewProject: TFrmNewProject;
-
 implementation
 
 uses Horse.CodeGen.Templates;
