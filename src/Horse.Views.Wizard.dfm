@@ -3,7 +3,7 @@ object FrmNewProject: TFrmNewProject
   Top = 0
   BorderStyle = bsDialog
   Caption = 'New project'
-  ClientHeight = 527
+  ClientHeight = 546
   ClientWidth = 441
   Color = clBtnFace
   Constraints.MinHeight = 145
@@ -21,14 +21,14 @@ object FrmNewProject: TFrmNewProject
     Left = 0
     Top = 0
     Width = 441
-    Height = 527
+    Height = 546
     Align = alClient
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
     DesignSize = (
       441
-      527)
+      546)
     object imgHeader: TImage
       Left = 22
       Top = 12
@@ -406,7 +406,7 @@ object FrmNewProject: TFrmNewProject
     object Image1: TImage
       AlignWithMargins = True
       Left = 1
-      Top = 416
+      Top = 435
       Width = 439
       Height = 40
       Margins.Left = 0
@@ -473,6 +473,7 @@ object FrmNewProject: TFrmNewProject
         0200DC072AFF1B500000007420A60000E001882900007800620A00001E809802
         00800720A60000E001882900007800620A00001E809802008007FE0700743DF2
         476B0E020000000049454E44AE426082}
+      ExplicitTop = 416
       ExplicitWidth = 339
     end
     object lblMiddlewares: TLabel
@@ -612,7 +613,7 @@ object FrmNewProject: TFrmNewProject
     end
     object Button1: TButton
       Left = 220
-      Top = 471
+      Top = 488
       Width = 109
       Height = 37
       Caption = 'CANCEL'
@@ -621,13 +622,28 @@ object FrmNewProject: TFrmNewProject
     end
     object Button2: TButton
       Left = 105
-      Top = 471
+      Top = 488
       Width = 109
       Height = 37
       Caption = 'DONE'
       Default = True
       ModalResult = 1
       TabOrder = 9
+    end
+    object chkLogger: TCheckBox
+      Left = 22
+      Top = 391
+      Width = 230
+      Height = 17
+      Anchors = [akLeft, akTop, akRight]
+      Caption = 'Logger - Access logging'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 10
     end
   end
 end
