@@ -38,8 +38,8 @@ requires
   IndyProtocols,
   IndyCore,
   dbrtl,
-  DOSCommandDD{BOSS},
-  DOSCommandDR{BOSS};
+  DOSCommandDD,
+  DOSCommandDR;
 
 contains
   Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',
@@ -52,6 +52,17 @@ contains
   Horse.Registration in 'src\Horse.Registration.pas',
   Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
-  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss};
+  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
+  Horse.NewProject.View in 'src\Horse.NewProject.View.pas' {HorseViewsNewProject},
+  Horse.NewProject.Templates in 'src\Horse.NewProject.Templates.pas',
+  Horse.Wizard.Types in 'src\Horse.Wizard.Types.pas',
+  Horse.NewProject.Creator in 'src\Horse.NewProject.Creator.pas',
+  Horse.NewProject.Creator.Vcl.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas',
+  Horse.NewProject.Creator.Vcl.NewForm.Main in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.pas',
+  Horse.NewProject.Creator.Vcl in 'src\Horse.NewProject.Creator.Vcl.pas',
+  Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas',
+  Horse.NewProject.Creator.WinSvc.NewForm.Main in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas',
+  Horse.NewProject.Creator.WinSvc in 'src\Horse.NewProject.Creator.WinSvc.pas',
+  Horse.NewProject in 'src\Horse.NewProject.pas';
 
 end.
