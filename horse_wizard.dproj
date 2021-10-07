@@ -91,6 +91,7 @@
         <DCC_Description>Horse</DCC_Description>
         <VerInfo_Keys>CompanyName=Hashload;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_BplOutput>.\$(Platform)\$(Config)</DCC_BplOutput>
+        <Debugger_HostApplication>C:\Program Files (x86)\Embarcadero\Studio\21.0\bin\bds.exe</Debugger_HostApplication>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
         <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
@@ -142,6 +143,7 @@
         <DCCReference Include="src\Horse.NewProject.pas"/>
         <DCCReference Include="src\Horse.NewProject.Wizard.pas"/>
         <DCCReference Include="src\Horse.Middlewares.pas"/>
+        <DCCReference Include="src\Horse.Wizard.Utils.pas"/>
         <RcItem Include="src\HashloadIcon.ico">
             <ResourceType>ICON</ResourceType>
             <ResourceId>HashloadIcon</ResourceId>

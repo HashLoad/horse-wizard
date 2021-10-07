@@ -62,6 +62,7 @@ contains
   Horse.NewProject.Creator.WinSvc in 'src\Horse.NewProject.Creator.WinSvc.pas',
   Horse.NewProject in 'src\Horse.NewProject.pas',
   Horse.NewProject.Wizard in 'src\Horse.NewProject.Wizard.pas',
-  Horse.Middlewares in 'src\Horse.Middlewares.pas';
+  Horse.Middlewares in 'src\Horse.Middlewares.pas',
+  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas';
 
 end.

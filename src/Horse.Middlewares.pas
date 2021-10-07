@@ -7,12 +7,16 @@ type
     ['{095E9FE2-785D-4296-84DE-BF7B0D1B44E8}']
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
   end;
 
   THorseMiddlewareBasicAuth = class(TInterfacedObject, IHorseMiddleware)
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -20,6 +24,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -27,6 +33,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -34,6 +42,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -41,6 +51,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -48,6 +60,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -55,6 +69,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -62,6 +78,8 @@ type
   public
     function Name: string;
     function Url: string;
+    function &Uses: String;
+    function Declaration: string;
     class function New: IHorseMiddleware;
   end;
 
@@ -70,6 +88,16 @@ type
 implementation
 
 { THorseMiddlewareJohnson }
+
+function THorseMiddlewareJohnson.&Uses: String;
+begin
+  result := 'Horse.Jhonson';
+end;
+
+function THorseMiddlewareJohnson.Declaration: string;
+begin
+  result := 'Use(Jhonson())';
+end;
 
 function THorseMiddlewareJohnson.Name: string;
 begin
@@ -88,6 +116,16 @@ end;
 
 { THorseMiddlewareCORS }
 
+function THorseMiddlewareCORS.&Uses: String;
+begin
+  result := 'Horse.CORS';
+end;
+
+function THorseMiddlewareCORS.Declaration: string;
+begin
+  result := 'Use(CORS)';
+end;
+
 function THorseMiddlewareCORS.Name: string;
 begin
   result := 'CORS';
@@ -104,6 +142,16 @@ begin
 end;
 
 { THorseMiddlewareOctetStream }
+
+function THorseMiddlewareOctetStream.&Uses: String;
+begin
+  result := 'Horse.OctetStream';
+end;
+
+function THorseMiddlewareOctetStream.Declaration: string;
+begin
+  Result := 'Use(OctetStream)';
+end;
 
 function THorseMiddlewareOctetStream.Name: string;
 begin
@@ -122,6 +170,16 @@ end;
 
 { THorseMiddlewareJWT }
 
+function THorseMiddlewareJWT.&Uses: String;
+begin
+  result := 'Horse.JWT';
+end;
+
+function THorseMiddlewareJWT.Declaration: string;
+begin
+  result := 'Use(HorseJWT(''MY-PASSWORD''))';
+end;
+
 function THorseMiddlewareJWT.Name: string;
 begin
   result := 'Horse-JWT';
@@ -138,6 +196,20 @@ begin
 end;
 
 { THorseMiddlewareBasicAuth }
+
+function THorseMiddlewareBasicAuth.&Uses: String;
+begin
+  Result := 'Horse.BasicAuthentication';
+end;
+
+function THorseMiddlewareBasicAuth.Declaration: string;
+begin
+  result := 'Use(HorseBasicAuthentication(' + Chr(13) +
+            '  function(const AUsername, APassword: string): Boolean' + Chr(13) +
+            'begin ' + Chr(13) +
+            ' Result := AUsername.Equals(''user'') and APassword.Equals(''password'');' + Chr(13) +
+            'end))';
+end;
 
 function THorseMiddlewareBasicAuth.Name: string;
 begin
@@ -156,6 +228,16 @@ end;
 
 { THorseMiddlewareCompression }
 
+function THorseMiddlewareCompression.&Uses: String;
+begin
+  result := 'Horse.Compression';
+end;
+
+function THorseMiddlewareCompression.Declaration: string;
+begin
+  result := 'Use(Compression()) // Must come before Jhonson middleware';
+end;
+
 function THorseMiddlewareCompression.Name: string;
 begin
   result := 'Horse-Compression';
@@ -173,6 +255,16 @@ end;
 
 { THorseMiddlewareHandleException }
 
+function THorseMiddlewareHandleException.&Uses: String;
+begin
+  result := 'Horse.HandleException';
+end;
+
+function THorseMiddlewareHandleException.Declaration: string;
+begin
+  result := 'Use(HandleException)';
+end;
+
 function THorseMiddlewareHandleException.Name: string;
 begin
   result := 'Handle-Exception';
@@ -189,6 +281,16 @@ begin
 end;
 
 { THorseMiddlewareLogger }
+
+function THorseMiddlewareLogger.&Uses: String;
+begin
+  result := 'Horse.Logger';
+end;
+
+function THorseMiddlewareLogger.Declaration: string;
+begin
+  result := 'Use( THorseLoggerManager.HorseCallback() )';
+end;
 
 function THorseMiddlewareLogger.Name: string;
 begin

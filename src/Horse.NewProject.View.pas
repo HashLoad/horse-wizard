@@ -53,11 +53,14 @@ function THorseViewsNewProject.GetMiddlewares: TList<IHorseMiddleware>;
 begin
   result := TList<IHorseMiddleware>.create;
   try
-    if chkJhonson.Checked then
-      result.Add(THorseMiddlewareJohnson.New);
-
     if chkHorseCORS.Checked then
       result.Add(THorseMiddlewareCORS.New);
+
+    if chkHorseCompression.Checked then
+      result.Add(THorseMiddlewareCompression.New);
+
+    if chkJhonson.Checked then
+      result.Add(THorseMiddlewareJohnson.New);
 
     if chkHorseOctetStream.Checked then
       result.Add(THorseMiddlewareOctetStream.New);
@@ -65,17 +68,14 @@ begin
     if chkHorseJWT.Checked then
       result.Add(THorseMiddlewareJWT.New);
 
-    if chkHorseBasicAuth.Checked then
-      result.Add(THorseMiddlewareBasicAuth.New);
-
-    if chkHorseCompression.Checked then
-      result.Add(THorseMiddlewareCompression.New);
-
     if chkHandleException.Checked then
       result.Add(THorseMiddlewareHandleException.New);
 
     if chkLogger.Checked then
       result.Add(THorseMiddlewareLogger.New);
+
+    if chkHorseBasicAuth.Checked then
+      result.Add(THorseMiddlewareBasicAuth.New);
   except
     result.free;
     raise;
