@@ -87,7 +87,7 @@
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
         <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Locale>1033</VerInfo_Locale>
-        <DllSuffix>103</DllSuffix>
+        <DllSuffix>104</DllSuffix>
         <DCC_Description>Horse</DCC_Description>
         <VerInfo_Keys>CompanyName=Hashload;FileDescription=$(MSBuildProjectName);FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProgramID=com.embarcadero.$(MSBuildProjectName);ProductName=$(MSBuildProjectName);ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
         <DCC_BplOutput>.\$(Platform)\$(Config)</DCC_BplOutput>
@@ -120,12 +120,7 @@
         <DCCReference Include="src\Horse.CodeGen.NewUnit.pas"/>
         <DCCReference Include="src\Horse.CodeGen.SourceFile.pas"/>
         <DCCReference Include="src\Horse.CodeGen.Templates.pas"/>
-        <DCCReference Include="src\Horse.Views.Wizard.pas">
-            <Form>FrmNewProject</Form>
-        </DCCReference>
-        <DCCReference Include="src\Horse.ProjectWizardEx.pas"/>
         <DCCReference Include="src\Horse.Registration.pas"/>
-        <DCCReference Include="src\Horse.Splash.Registration.pas"/>
         <DCCReference Include="src\Horse.Boss.Initializer.pas"/>
         <DCCReference Include="src\Horse.Views.Boss.pas">
             <Form>FrmBoss</Form>
@@ -145,6 +140,8 @@
         <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas"/>
         <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.pas"/>
         <DCCReference Include="src\Horse.NewProject.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Wizard.pas"/>
+        <DCCReference Include="src\Horse.Middlewares.pas"/>
         <RcItem Include="src\HashloadIcon.ico">
             <ResourceType>ICON</ResourceType>
             <ResourceId>HashloadIcon</ResourceId>
@@ -174,11 +171,16 @@
                     <Source Name="MainSource">horse_wizard.dpk</Source>
                 </Source>
                 <Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dcloffice2k260.bpl">Microsoft Office 2000 Sample Automation Server Wrapper Components</Excluded_Packages>
-                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp260.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
+                    <Excluded_Packages Name="$(BDSBIN)\dclofficexp270.bpl">Microsoft Office XP Sample Automation Server Wrapper Components</Excluded_Packages>
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="Win32\Debug\horse_wizard104.bpl" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>horse_wizard.bpl</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
@@ -186,12 +188,6 @@
                 </DeployFile>
                 <DeployFile LocalName="$(BDS)\Redist\osx64\libcgsqlite3.dylib" Class="DependencyModule">
                     <Platform Name="OSX64">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="Win32\Debug\horse_wizard103.bpl" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>horse_wizard.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

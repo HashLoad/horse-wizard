@@ -2,19 +2,23 @@ unit Horse.Boss.Initializer;
 
 interface
 
-uses ToolsAPI, System.Classes;
+uses
+  ToolsAPI,
+  Horse.Middlewares,
+  System.Generics.Collections,
+  System.Classes;
 
 type
   THorseBossInitializer = class
   private
     FProject: IOTAProject;
-    FModules: TStringList;
+    FModules: TList<IHorseMiddleware>;
     FLocked: Boolean;
     function GetDependencies: string;
     procedure RunBossInstall;
     procedure ReloadProject;
   public
-    constructor Create(AProject: IOTAProject; AModules: TStringList);
+    constructor Create(AProject: IOTAProject; AModules: TList<IHorseMiddleware>);
     procedure Generate;
     procedure Wait;
   end;
@@ -43,7 +47,7 @@ const
 
 { THorseBossInitializer }
 
-constructor THorseBossInitializer.Create(AProject: IOTAProject; AModules: TStringList);
+constructor THorseBossInitializer.Create(AProject: IOTAProject; AModules: TList<IHorseMiddleware>);
 begin
   FProject := AProject;
   FModules := AModules;
@@ -73,14 +77,12 @@ end;
 function THorseBossInitializer.GetDependencies: string;
 var
   LList: string;
-  LModules: string;
+  i: Integer;
 begin
   LList := EmptyStr;
 
-  for LModules in FModules do
-  begin
-    LList := LList + Format(BOSS_MODULE_DEFAULT, [LModules]) + ',' + sLineBreak;
-  end;
+  for i := 0 to Pred(FModules.Count) do
+    LList := LList + Format(BOSS_MODULE_DEFAULT, [FModules[i].Url]) + ',' + sLineBreak;
 
   LList := LList + Format(BOSS_MODULE_DEFAULT, [HORSE_MODULE]);
   Result := LList;

@@ -84,7 +84,7 @@ resourcestring
     '  THorse.Listen(%1:s, ' + sLineBreak +
     '    procedure (Horse: THorse)' + sLineBreak +
     '    begin' + sLineBreak +
-    '      Writeln(''Server is runing on port '' + StrToInt(Horse.Port));' + sLineBreak +
+    '      Writeln(''Server is runing on port '' + IntToStr(Horse.Port));' + sLineBreak +
     '    end);' + sLineBreak +
     'end.';
 

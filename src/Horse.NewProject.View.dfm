@@ -500,7 +500,6 @@ object HorseViewsNewProject: THorseViewsNewProject
     Default = True
     ModalResult = 1
     TabOrder = 3
-    ExplicitTop = 392
   end
   object Button1: TButton
     Left = 123
@@ -511,7 +510,6 @@ object HorseViewsNewProject: THorseViewsNewProject
     Caption = 'CANCEL'
     ModalResult = 2
     TabOrder = 4
-    ExplicitTop = 392
   end
   object edtPort: TEdit
     Left = 416

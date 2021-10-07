@@ -27,7 +27,7 @@ package horse_wizard;
 {$DEFINE DEBUG}
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'Horse'}
-{$LIBSUFFIX '103'}
+{$LIBSUFFIX '104'}
 {$IMPLICITBUILD ON}
 
 requires
@@ -47,10 +47,7 @@ contains
   Horse.CodeGen.NewUnit in 'src\Horse.CodeGen.NewUnit.pas',
   Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
   Horse.CodeGen.Templates in 'src\Horse.CodeGen.Templates.pas',
-  Horse.Views.Wizard in 'src\Horse.Views.Wizard.pas' {FrmNewProject},
-  Horse.ProjectWizardEx in 'src\Horse.ProjectWizardEx.pas',
   Horse.Registration in 'src\Horse.Registration.pas',
-  Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
   Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
   Horse.NewProject.View in 'src\Horse.NewProject.View.pas' {HorseViewsNewProject},
@@ -63,6 +60,8 @@ contains
   Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas',
   Horse.NewProject.Creator.WinSvc.NewForm.Main in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas',
   Horse.NewProject.Creator.WinSvc in 'src\Horse.NewProject.Creator.WinSvc.pas',
-  Horse.NewProject in 'src\Horse.NewProject.pas';
+  Horse.NewProject in 'src\Horse.NewProject.pas',
+  Horse.NewProject.Wizard in 'src\Horse.NewProject.Wizard.pas',
+  Horse.Middlewares in 'src\Horse.Middlewares.pas';
 
 end.
