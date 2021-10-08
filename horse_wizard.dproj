@@ -144,6 +144,13 @@
         <DCCReference Include="src\Horse.NewProject.Wizard.pas"/>
         <DCCReference Include="src\Horse.Middlewares.pas"/>
         <DCCReference Include="src\Horse.Wizard.Utils.pas"/>
+        <DCCReference Include="src\Horse.NewController.View.pas">
+            <Form>HorseViewsNewController</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Horse.NewController.Model.pas"/>
+        <DCCReference Include="src\Horse.NewController.Wizard.pas"/>
+        <DCCReference Include="src\Horse.NewController.Creator.pas"/>
         <RcItem Include="src\HashloadIcon.ico">
             <ResourceType>ICON</ResourceType>
             <ResourceId>HashloadIcon</ResourceId>

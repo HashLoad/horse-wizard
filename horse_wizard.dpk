@@ -63,6 +63,10 @@ contains
   Horse.NewProject in 'src\Horse.NewProject.pas',
   Horse.NewProject.Wizard in 'src\Horse.NewProject.Wizard.pas',
   Horse.Middlewares in 'src\Horse.Middlewares.pas',
-  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas';
+  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas',
+  Horse.NewController.View in 'src\Horse.NewController.View.pas' {HorseViewsNewController},
+  Horse.NewController.Model in 'src\Horse.NewController.Model.pas',
+  Horse.NewController.Wizard in 'src\Horse.NewController.Wizard.pas',
+  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas';
 
 end.

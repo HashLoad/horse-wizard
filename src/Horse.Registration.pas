@@ -7,6 +7,7 @@ uses
   DesignIntf,
   System.SysUtils,
   Winapi.Windows,
+  Horse.NewController.Wizard,
   Horse.NewProject.Wizard;
 
 var
@@ -24,11 +25,12 @@ procedure Register;
 begin
   ForceDemandLoadState(dlDisable);
   RegisterPackageWizard(THorseNewProjectWizard.New);
+  RegisterPackageWizard(THorseNewControllerWizard.New);
+
 end;
 
 initialization
   bmSplashScreen := LoadBitmap(HInstance, 'HashloadSplash');
   (SplashScreenServices as IOTASplashScreenServices).AddPluginBitmap(resPackageName, bmSplashScreen);
-
 
 end.
