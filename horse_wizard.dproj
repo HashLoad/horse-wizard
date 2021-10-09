@@ -125,11 +125,9 @@
         <DCCReference Include="src\Horse.Boss.Initializer.pas"/>
         <DCCReference Include="src\Horse.Views.Boss.pas">
             <Form>FrmBoss</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Horse.NewProject.View.pas">
             <Form>HorseViewsNewProject</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Horse.NewProject.Templates.pas"/>
         <DCCReference Include="src\Horse.Wizard.Types.pas"/>
@@ -146,19 +144,10 @@
         <DCCReference Include="src\Horse.Wizard.Utils.pas"/>
         <DCCReference Include="src\Horse.NewController.View.pas">
             <Form>HorseViewsNewController</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="src\Horse.NewController.Model.pas"/>
         <DCCReference Include="src\Horse.NewController.Wizard.pas"/>
         <DCCReference Include="src\Horse.NewController.Creator.pas"/>
-        <RcItem Include="src\HashloadIcon.ico">
-            <ResourceType>ICON</ResourceType>
-            <ResourceId>HashloadIcon</ResourceId>
-        </RcItem>
-        <RcItem Include="src\HashloadSplash.bmp">
-            <ResourceType>BITMAP</ResourceType>
-            <ResourceId>HashloadSplash</ResourceId>
-        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

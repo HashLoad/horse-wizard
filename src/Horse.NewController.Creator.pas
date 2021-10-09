@@ -95,7 +95,7 @@ end;
 
 function THorseNewControllerCreator.GetOwner: IOTAModule;
 begin
-  result := nil;
+  result := GetActiveProject;
 end;
 
 function THorseNewControllerCreator.GetShowForm: Boolean;
@@ -127,7 +127,7 @@ function THorseNewControllerCreator.NewImplSource(const ModuleIdent, FormIdent, 
 var
   LUnitIdent: String;
   LClassName: String;
-  LFileName: String;
+  LFileName: string;
 begin
   (BorlandIDEServices as IOTAModuleServices)
     .GetNewModuleAndClassName('', LUnitIdent, LClassName, LFileName);

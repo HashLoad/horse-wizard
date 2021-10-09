@@ -439,6 +439,7 @@ object HorseViewsNewController: THorseViewsNewController
     Width = 153
     Height = 25
     TabOrder = 0
+    OnChange = edtControllerNameChange
   end
   object Button2: TButton
     Left = 8

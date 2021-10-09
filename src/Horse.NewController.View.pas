@@ -23,6 +23,7 @@ type
     chkDELETE: TCheckBox;
     edtRoute: TEdit;
     Label1: TLabel;
+    procedure edtControllerNameChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -39,6 +40,12 @@ implementation
 {$R *.dfm}
 
 { THorseViewsNewController }
+
+procedure THorseViewsNewController.edtControllerNameChange(Sender: TObject);
+begin
+  if edtRoute.Text = EmptyStr then
+    edtRoute.Text := edtControllerName.Text;
+end;
 
 function THorseViewsNewController.GetController: THorseNewControllerModel;
 begin
