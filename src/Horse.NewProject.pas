@@ -13,21 +13,31 @@ uses
   Horse.Wizard.Utils,
   Horse.Wizard.Types,
   Horse.NewProject.Creator,
+  Horse.NewProject.Creator.Apache,
   Horse.NewProject.Creator.Vcl,
   Horse.NewProject.Creator.WinSvc;
 
 type THorseNewProject = class
 
   private
+    class var FUseBoss: Boolean;
+    class var FPort: Integer;
+    class var FPlatform: THorsePlatform;
+    class var FFramework: THorseFramework;
+    class var FMiddlewares: TList<IHorseMiddleware>;
+
     class function GetCreator(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer): IOTACreator;
     class procedure AddMiddlewaresUses(AProject: IOTAProject; AMiddlewares: TList<IHorseMiddleware>);
     class procedure AddMiddlewares(AProject: IOTAProject; AMiddlewares: TList<IHorseMiddleware>);
 
   public
-    class procedure Execute(APlatform: THorsePlatform;
-                            AFramework: THorseFramework;
-                            AMiddlewares: TList<IHorseMiddleware>;
-                            APort: Integer);
+    class procedure Execute;
+
+    class procedure Port(Value: Integer);
+    class procedure UseBoss(Value: Boolean);
+    class procedure &Platform(Value: THorsePlatform);
+    class procedure Framework(Value: THorseFramework);
+    class procedure Middlewares(Value: TList<IHorseMiddleware>);
 
 end;
 
@@ -117,22 +127,22 @@ begin
   end;
 end;
 
-class procedure THorseNewProject.Execute(APlatform: THorsePlatform; AFramework: THorseFramework; AMiddlewares: TList<IHorseMiddleware>; APort: Integer);
+class procedure THorseNewProject.Execute;
 var
   creator: IOTACreator;
   project: IOTAProject;
   boss: THorseBossInitializer;
 begin
-  creator := GetCreator(APlatform, AFramework, APort);
+  creator := GetCreator(FPlatform, FFramework, FPort);
   (BorlandIDEServices as IOTAModuleServices).CreateModule(creator);
 
   project := GetActiveProject;
-  AddMiddlewares(project, AMiddlewares);
-  AddMiddlewaresUses(project, AMiddlewares);
+  AddMiddlewares(project, FMiddlewares);
+  AddMiddlewaresUses(project, FMiddlewares);
 
-  if project.Save(True, True) then
+  if (project.Save(True, True)) and (FUseBoss) then
   begin
-    boss := THorseBossInitializer.Create(project, AMiddlewares);
+    boss := THorseBossInitializer.Create(project, FMiddlewares);
     try
       boss.Generate;
       boss.Wait;
@@ -142,8 +152,16 @@ begin
   end;
 end;
 
+class procedure THorseNewProject.Framework(Value: THorseFramework);
+begin
+  FFramework := Value;
+end;
+
 class function THorseNewProject.GetCreator(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer): IOTACreator;
 begin
+  if AFramework = hfApache then
+    result := THorseNewProjectCreatorApache.New(APlatform, AFramework, APort)
+  else
   if AFramework = hfVcl then
     result := THorseNewProjectCreatorVcl.New(APlatform, AFramework, APort)
   else
@@ -151,6 +169,26 @@ begin
     result := THorseNewProjectCreatorWinSvc.New(APlatform, AFramework, APort)
   else
     result := THorseNewProjectCreator.New(APlatform, AFramework, APort);
+end;
+
+class procedure THorseNewProject.Middlewares(Value: TList<IHorseMiddleware>);
+begin
+  FMiddlewares := Value;
+end;
+
+class procedure THorseNewProject.&Platform(Value: THorsePlatform);
+begin
+  FPlatform := Value;
+end;
+
+class procedure THorseNewProject.Port(Value: Integer);
+begin
+  FPort := Value;
+end;
+
+class procedure THorseNewProject.UseBoss(Value: Boolean);
+begin
+  FUseBoss := Value;
 end;
 
 end.

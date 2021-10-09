@@ -146,6 +146,7 @@
         <DCCReference Include="src\Horse.NewController.Creator.pas"/>
         <DCCReference Include="src\Horse.NewController.Binding.pas"/>
         <DCCReference Include="src\Horse.NewController.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.Apache.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

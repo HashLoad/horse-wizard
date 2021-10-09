@@ -13,6 +13,7 @@ object HorseViewsNewProject: THorseViewsNewProject
   Font.Style = []
   OldCreateOrder = True
   Position = poMainFormCenter
+  OnCreate = FormCreate
   DesignSize = (
     501
     492)
@@ -461,6 +462,7 @@ object HorseViewsNewProject: THorseViewsNewProject
     ParentFont = False
     TabOrder = 0
     Text = 'Windows'
+    OnChange = edtTargetChange
     Items.Strings = (
       'Windows'
       'Linux')
@@ -638,5 +640,22 @@ object HorseViewsNewProject: THorseViewsNewProject
     Font.Style = []
     ParentFont = False
     TabOrder = 12
+  end
+  object chkUseBoss: TCheckBox
+    Left = 432
+    Top = 223
+    Width = 61
+    Height = 17
+    Anchors = [akLeft, akTop, akRight]
+    Caption = 'Use Boss'
+    Checked = True
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    State = cbChecked
+    TabOrder = 13
   end
 end

@@ -48,10 +48,12 @@ begin
     begin
       middlewares := form.GetMiddlewares;
       try
-        THorseNewProject.Execute(form.HorsePlatform,
-                                 form.HorseFramework,
-                                 middlewares,
-                                 form.Port);
+        THorseNewProject.UseBoss(form.UseBoss);
+        THorseNewProject.Port(form.Port);
+        THorseNewProject.Framework(form.HorseFramework);
+        THorseNewProject.&Platform(form.HorsePlatform);
+        THorseNewProject.Middlewares(middlewares);
+        THorseNewProject.Execute;
       finally
         middlewares.Free;
       end;
