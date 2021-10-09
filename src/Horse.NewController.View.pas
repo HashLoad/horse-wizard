@@ -43,8 +43,7 @@ implementation
 
 procedure THorseViewsNewController.edtControllerNameChange(Sender: TObject);
 begin
-  if edtRoute.Text = EmptyStr then
-    edtRoute.Text := edtControllerName.Text;
+  edtRoute.Text := edtControllerName.Text;
 end;
 
 function THorseViewsNewController.GetController: THorseNewControllerModel;

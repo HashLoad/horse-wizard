@@ -8,6 +8,7 @@ uses
   System.SysUtils,
   Winapi.Windows,
   Horse.NewController.Wizard,
+  Horse.NewController.Binding,
   Horse.NewProject.Wizard;
 
 var
@@ -26,6 +27,7 @@ begin
   ForceDemandLoadState(dlDisable);
   RegisterPackageWizard(THorseNewProjectWizard.New);
   RegisterPackageWizard(THorseNewControllerWizard.New);
+  RegisterNewControllerBinding;
 
 end;
 

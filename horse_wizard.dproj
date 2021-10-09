@@ -116,11 +116,7 @@
         <DCCReference Include="dbrtl.dcp"/>
         <DCCReference Include="DOSCommandDD.dcp"/>
         <DCCReference Include="DOSCommandDR.dcp"/>
-        <DCCReference Include="src\Horse.CodeGen.NewHorseProject.pas"/>
-        <DCCReference Include="src\Horse.CodeGen.NewProject.pas"/>
-        <DCCReference Include="src\Horse.CodeGen.NewUnit.pas"/>
         <DCCReference Include="src\Horse.CodeGen.SourceFile.pas"/>
-        <DCCReference Include="src\Horse.CodeGen.Templates.pas"/>
         <DCCReference Include="src\Horse.Registration.pas"/>
         <DCCReference Include="src\Horse.Boss.Initializer.pas"/>
         <DCCReference Include="src\Horse.Views.Boss.pas">
@@ -148,6 +144,8 @@
         <DCCReference Include="src\Horse.NewController.Model.pas"/>
         <DCCReference Include="src\Horse.NewController.Wizard.pas"/>
         <DCCReference Include="src\Horse.NewController.Creator.pas"/>
+        <DCCReference Include="src\Horse.NewController.Binding.pas"/>
+        <DCCReference Include="src\Horse.NewController.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

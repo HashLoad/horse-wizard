@@ -1,7 +1,6 @@
 package horse_wizard;
 
 {$R *.res}
-{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -42,11 +41,7 @@ requires
   DOSCommandDR;
 
 contains
-  Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',
-  Horse.CodeGen.NewProject in 'src\Horse.CodeGen.NewProject.pas',
-  Horse.CodeGen.NewUnit in 'src\Horse.CodeGen.NewUnit.pas',
   Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
-  Horse.CodeGen.Templates in 'src\Horse.CodeGen.Templates.pas',
   Horse.Registration in 'src\Horse.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
   Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
@@ -67,6 +62,8 @@ contains
   Horse.NewController.View in 'src\Horse.NewController.View.pas' {HorseViewsNewController},
   Horse.NewController.Model in 'src\Horse.NewController.Model.pas',
   Horse.NewController.Wizard in 'src\Horse.NewController.Wizard.pas',
-  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas';
+  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas',
+  Horse.NewController.Binding in 'src\Horse.NewController.Binding.pas',
+  Horse.NewController in 'src\Horse.NewController.pas';
 
 end.
