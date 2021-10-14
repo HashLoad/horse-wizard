@@ -48,23 +48,23 @@ begin
 
   if Self.GET then
     result := result +
-      'procedure %0:sGET(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
+      'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
   if Self.GETID then
     result := result +
-      'procedure %0:sGET_ID(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
+      'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
   if Self.POST then
     result := result +
-      'procedure %0:sPOST(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
+      'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
   if Self.PUT then
     result := result +
-      'procedure %0:sPUT(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
+      'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
   if Self.DELETE then
     result := result +
-      'procedure %0:sDELETE(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
+      'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
   result := result +
   '' + sLineBreak +
@@ -78,23 +78,23 @@ begin
 
   if Self.GET then
     result := result +
-  '    .Get(ROUTE, %0:sGET)' + sLineBreak;
+  '    .Get(ROUTE, %0:sGet)' + sLineBreak;
 
   if Self.POST then
     result := result +
-  '    .Post(ROUTE, %0:sPOST)' + sLineBreak;
+  '    .Post(ROUTE, %0:sPost)' + sLineBreak;
 
   if Self.GETID then
     result := result +
-  '    .Get(ROUTE_ID, %0:sGET_ID)' + sLineBreak;
+  '    .Get(ROUTE_ID, %0:sGetById)' + sLineBreak;
 
   if Self.PUT then
     result := result +
-  '    .Put(ROUTE_ID, %0:sPUT)' + sLineBreak;
+  '    .Put(ROUTE_ID, %0:sPut)' + sLineBreak;
 
   if Self.DELETE then
     result := result +
-  '    .Delete(ROUTE_ID, %0:sDELETE)' + sLineBreak;
+  '    .Delete(ROUTE_ID, %0:sDelete)' + sLineBreak;
 
   result := result +
   'end;' + sLineBreak +
@@ -103,7 +103,7 @@ begin
   if Self.GET then
   begin
     result := result +
-      'procedure %0:sGET(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
       'end;' + sLineBreak +
@@ -113,7 +113,7 @@ begin
   if Self.GETID then
   begin
     result := result +
-      'procedure %0:sGET_ID(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
       'begin' + sLineBreak +
@@ -126,7 +126,7 @@ begin
   if Self.POST then
   begin
     result := result +
-      'procedure %0:sPOST(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
       'end;' + sLineBreak +
@@ -136,7 +136,7 @@ begin
   if Self.PUT then
   begin
     result := result +
-      'procedure %0:sPUT(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
       'begin' + sLineBreak +
@@ -149,7 +149,7 @@ begin
   if Self.DELETE then
   begin
     result := result +
-    'procedure %0:sDELETE(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+    'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
     'var' + sLineBreak +
     '  id: string;' + sLineBreak +
     'begin' + sLineBreak +
