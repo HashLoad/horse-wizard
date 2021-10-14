@@ -37,8 +37,8 @@ requires
   IndyProtocols,
   IndyCore,
   dbrtl,
-  DOSCommandDD,
-  DOSCommandDR;
+  DOSCommandDD{BOSS},
+  DOSCommandDR{BOSS};
 
 contains
   Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
