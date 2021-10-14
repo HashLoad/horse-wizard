@@ -134,7 +134,7 @@ begin
     edtFramework.Items.Delete(6);
     edtFramework.Items.Delete(5);
     edtFramework.Items.Delete(4);
-    edtFramework.Items.Delete(2);
+    edtFramework.Items.Delete(1);
     edtFramework.ItemIndex := 1;
   end;
 
