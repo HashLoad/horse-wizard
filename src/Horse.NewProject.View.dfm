@@ -5,7 +5,7 @@ object HorseViewsNewProject: THorseViewsNewProject
   Caption = 'Horse - New Project'
   ClientHeight = 492
   ClientWidth = 501
-  Color = clBtnFace
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13

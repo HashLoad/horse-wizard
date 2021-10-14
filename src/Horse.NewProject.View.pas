@@ -125,15 +125,20 @@ begin
   edtFramework.Items.Add('WinService');
 
   if edtTarget.Text = 'Windows' then
-    edtFramework.Items.Delete(3)
+  begin
+    edtFramework.Items.Delete(3);
+    edtFramework.ItemIndex := 2;
+  end
   else
   begin
     edtFramework.Items.Delete(6);
     edtFramework.Items.Delete(5);
     edtFramework.Items.Delete(4);
+    edtFramework.Items.Delete(2);
+    edtFramework.ItemIndex := 1;
   end;
 
-  edtFramework.ItemIndex := 2;
+
 end;
 
 function THorseViewsNewProject.UseBoss: Boolean;

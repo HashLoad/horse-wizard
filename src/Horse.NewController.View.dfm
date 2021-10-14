@@ -5,7 +5,7 @@ object HorseViewsNewController: THorseViewsNewController
   Caption = 'Horse - New Controller'
   ClientHeight = 395
   ClientWidth = 447
-  Color = clBtnFace
+  Color = clWhite
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -13
