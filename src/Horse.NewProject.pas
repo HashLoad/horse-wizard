@@ -53,6 +53,7 @@ var
   linePosition: Integer;
   horseUse: string;
 begin
+  linePosition := 0;
   unitText := EditorAsStringList;
   try
     editView := (BorlandIDEServices as IOTAEditorServices).TopView;
@@ -101,6 +102,7 @@ var
   i: Integer;
   usesPosition: Integer;
 begin
+  usesPosition := 0;
   unitText := EditorAsStringList;
   try
     editView := (BorlandIDEServices as IOTAEditorServices).TopView;

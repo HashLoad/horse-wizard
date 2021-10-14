@@ -56,6 +56,7 @@ var
   listenPosition: Integer;
   editView: IOTAEditView;
 begin
+  listenPosition := 0;
   GetActiveProject.ShowFilename(GetActiveProject.FileName);
 
   editorList := EditorAsStringList;

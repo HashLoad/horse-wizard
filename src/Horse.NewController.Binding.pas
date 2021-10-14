@@ -75,7 +75,8 @@ end;
 initialization
 
 finalization
-  (BorlandIDEServices as IOTAKeyboardServices)
-    .RemoveKeyboardBinding(IndexNewControllerBinding);
+  if IndexNewControllerBinding >= 0 then
+    (BorlandIDEServices as IOTAKeyboardServices)
+      .RemoveKeyboardBinding(IndexNewControllerBinding);
 
 end.
