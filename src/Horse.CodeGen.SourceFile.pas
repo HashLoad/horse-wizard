@@ -12,6 +12,7 @@ type
     function GetSource: string;
     function GetAge: TDateTime;
     constructor Create(const ASource: string; const AArgs: array of const);
+    class function New(const ASource: string; const AArgs: array of const): IOTAFile;
   end;
 
 implementation
@@ -31,6 +32,11 @@ end;
 function TSourceFile.GetSource: string;
 begin
   Result := FSource;
+end;
+
+class function TSourceFile.New(const ASource: string; const AArgs: array of const): IOTAFile;
+begin
+  Result := Self.Create(ASource, AArgs);
 end;
 
 end.

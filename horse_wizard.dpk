@@ -10,24 +10,23 @@ package horse_wizard;
 {$EXTENDEDSYNTAX ON}
 {$IMPORTEDDATA ON}
 {$IOCHECKS ON}
-{$LOCALSYMBOLS ON}
+{$LOCALSYMBOLS OFF}
 {$LONGSTRINGS ON}
 {$OPENSTRINGS ON}
-{$OPTIMIZATION OFF}
+{$OPTIMIZATION ON}
 {$OVERFLOWCHECKS OFF}
 {$RANGECHECKS OFF}
-{$REFERENCEINFO ON}
+{$REFERENCEINFO OFF}
 {$SAFEDIVIDE OFF}
-{$STACKFRAMES ON}
+{$STACKFRAMES OFF}
 {$TYPEDADDRESS OFF}
 {$VARSTRINGCHECKS ON}
 {$WRITEABLECONST OFF}
 {$MINENUMSIZE 1}
 {$IMAGEBASE $400000}
-{$DEFINE DEBUG}
+{$DEFINE RELEASE}
 {$ENDIF IMPLICITBUILDING}
-{$DESCRIPTION 'Horse'}
-{$LIBSUFFIX '103'}
+{$DESCRIPTION 'Horse IDE Expert'}
 {$IMPLICITBUILD ON}
 
 requires
@@ -42,16 +41,30 @@ requires
   DOSCommandDR{BOSS};
 
 contains
-  Horse.CodeGen.NewHorseProject in 'src\Horse.CodeGen.NewHorseProject.pas',
-  Horse.CodeGen.NewProject in 'src\Horse.CodeGen.NewProject.pas',
-  Horse.CodeGen.NewUnit in 'src\Horse.CodeGen.NewUnit.pas',
   Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
-  Horse.CodeGen.Templates in 'src\Horse.CodeGen.Templates.pas',
-  Horse.Views.Wizard in 'src\Horse.Views.Wizard.pas' {FrmNewProject},
-  Horse.ProjectWizardEx in 'src\Horse.ProjectWizardEx.pas',
   Horse.Registration in 'src\Horse.Registration.pas',
-  Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
-  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss};
+  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
+  Horse.NewProject.View in 'src\Horse.NewProject.View.pas' {HorseViewsNewProject},
+  Horse.NewProject.Templates in 'src\Horse.NewProject.Templates.pas',
+  Horse.Wizard.Types in 'src\Horse.Wizard.Types.pas',
+  Horse.NewProject.Creator in 'src\Horse.NewProject.Creator.pas',
+  Horse.NewProject.Creator.Vcl.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas',
+  Horse.NewProject.Creator.Vcl.NewForm.Main in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.pas',
+  Horse.NewProject.Creator.Vcl in 'src\Horse.NewProject.Creator.Vcl.pas',
+  Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas',
+  Horse.NewProject.Creator.WinSvc.NewForm.Main in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas',
+  Horse.NewProject.Creator.WinSvc in 'src\Horse.NewProject.Creator.WinSvc.pas',
+  Horse.NewProject in 'src\Horse.NewProject.pas',
+  Horse.NewProject.Wizard in 'src\Horse.NewProject.Wizard.pas',
+  Horse.Middlewares in 'src\Horse.Middlewares.pas',
+  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas',
+  Horse.NewController.View in 'src\Horse.NewController.View.pas' {HorseViewsNewController},
+  Horse.NewController.Model in 'src\Horse.NewController.Model.pas',
+  Horse.NewController.Wizard in 'src\Horse.NewController.Wizard.pas',
+  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas',
+  Horse.NewController.Binding in 'src\Horse.NewController.Binding.pas',
+  Horse.NewController in 'src\Horse.NewController.pas',
+  Horse.NewProject.Creator.Apache in 'src\Horse.NewProject.Creator.Apache.pas';
 
 end.
