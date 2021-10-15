@@ -2,38 +2,35 @@ unit Horse.NewController.Model;
 
 interface
 
-uses
-  System.SysUtils;
+uses System.SysUtils;
 
 type THorseNewControllerModel = class
   private
-    Froute: String;
-    FGET: Boolean;
-    FGETID: Boolean;
-    FPOST: Boolean;
-    FPUT: Boolean;
-    FDELETE: Boolean;
-    FcontrollerName: String;
-
+    FRoute: string;
+    FGet: Boolean;
+    FGetById: Boolean;
+    FPost: Boolean;
+    FPut: Boolean;
+    FDelete: Boolean;
+    FControllerName: string;
   public
-    property controllerName: String read FcontrollerName write FcontrollerName;
-    property route: String read Froute write Froute;
-    property GET: Boolean read FGET write FGET;
-    property GETID: Boolean read FGETID write FGETID;
-    property POST: Boolean read FPOST write FPOST;
-    property PUT: Boolean read FPUT write FPUT;
-    property DELETE: Boolean read FDELETE write FDELETE;
-
-    function UnitContent(AUnitName: String): string;
+    property ControllerName: string read FControllerName write FControllerName;
+    property Route: string read FRoute write FRoute;
+    property Get: Boolean read FGet write FGet;
+    property GetById: Boolean read FGetById write FGetById;
+    property Post: Boolean read FPost write FPost;
+    property Put: Boolean read FPut write FPut;
+    property Delete: Boolean read FDelete write FDelete;
+    function UnitContent(const AUnitName: string): string;
 end;
 
 implementation
 
 { THorseNewControllerModel }
 
-function THorseNewControllerModel.UnitContent(AUnitName: String): string;
+function THorseNewControllerModel.UnitContent(const AUnitName: string): string;
 begin
-  result :=
+  Result :=
   'unit %2:s;' + sLineBreak +
   '' + sLineBreak +
   'interface' + sLineBreak +
@@ -46,63 +43,58 @@ begin
   '  ROUTE_ID = ''%1:s/:id'';' + sLineBreak +
   '' + sLineBreak;
 
-  if Self.GET then
-    result := result +
+  if Self.Get then
+    Result := Result +
       'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
-  if Self.GETID then
-    result := result +
+  if Self.GetById then
+    Result := Result +
       'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
-  if Self.POST then
-    result := result +
+  if Self.Post then
+    Result := Result +
       'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
-  if Self.PUT then
-    result := result +
+  if Self.Put then
+    Result := Result +
       'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
-  if Self.DELETE then
-    result := result +
+  if Self.Delete then
+    Result := Result +
       'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
 
-  result := result +
-  '' + sLineBreak +
-  'procedure %0:sRegistry;' + sLineBreak +
-  '' + sLineBreak +
-  'implementation' + sLineBreak +
-  '' + sLineBreak +
-  'procedure %0:sRegistry;' + sLineBreak +
-  'begin' + sLineBreak +
-  '  THorse' + sLineBreak;
+  Result := Result +
+    '' + sLineBreak +
+    'procedure %0:sRegistry;' + sLineBreak +
+    '' + sLineBreak +
+    'implementation' + sLineBreak +
+    '' + sLineBreak +
+    'procedure %0:sRegistry;' + sLineBreak +
+    'begin' + sLineBreak +
+    '  THorse' + sLineBreak;
 
-  if Self.GET then
-    result := result +
-  '    .Get(ROUTE, %0:sGet)' + sLineBreak;
+  if Self.Get then
+    Result := Result + '    .Get(ROUTE, %0:sGet)' + sLineBreak;
 
-  if Self.POST then
-    result := result +
-  '    .Post(ROUTE, %0:sPost)' + sLineBreak;
+  if Self.Post then
+    Result := Result + '    .Post(ROUTE, %0:sPost)' + sLineBreak;
 
-  if Self.GETID then
-    result := result +
-  '    .Get(ROUTE_ID, %0:sGetById)' + sLineBreak;
+  if Self.GetById then
+    Result := Result + '    .Get(ROUTE_ID, %0:sGetById)' + sLineBreak;
 
-  if Self.PUT then
-    result := result +
-  '    .Put(ROUTE_ID, %0:sPut)' + sLineBreak;
+  if Self.Put then
+    Result := Result + '    .Put(ROUTE_ID, %0:sPut)' + sLineBreak;
 
-  if Self.DELETE then
-    result := result +
-  '    .Delete(ROUTE_ID, %0:sDelete)' + sLineBreak;
+  if Self.Delete then
+    Result := Result + '    .Delete(ROUTE_ID, %0:sDelete)' + sLineBreak;
 
-  result := result +
-  'end;' + sLineBreak +
-  '' + sLineBreak;
+  Result := Result +
+    'end;' + sLineBreak +
+    '' + sLineBreak;
 
-  if Self.GET then
+  if Self.Get then
   begin
-    result := result +
+    Result := Result +
       'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
@@ -110,9 +102,9 @@ begin
       '' + sLineBreak;
   end;
 
-  if Self.GETID then
+  if Self.GetById then
   begin
-    result := result +
+    Result := Result +
       'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
@@ -123,9 +115,9 @@ begin
       '' + sLineBreak;
   end;
 
-  if Self.POST then
+  if Self.Post then
   begin
-    result := result +
+    Result := Result +
       'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
@@ -133,9 +125,9 @@ begin
       '' + sLineBreak;
   end;
 
-  if Self.PUT then
+  if Self.Put then
   begin
-    result := result +
+    Result := Result +
       'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
@@ -146,9 +138,9 @@ begin
       '' + sLineBreak;
   end;
 
-  if Self.DELETE then
+  if Self.Delete then
   begin
-    result := result +
+    Result := Result +
     'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
     'var' + sLineBreak +
     '  id: string;' + sLineBreak +
@@ -159,8 +151,8 @@ begin
     '' + sLineBreak;
   end;
 
-  result := result + 'end.';
-  result := Format(result, [controllerName, route, AUnitName]);
+  Result := Result + 'end.';
+  Result := Format(Result, [ControllerName, Route, AUnitName]);
 end;
 
 end.

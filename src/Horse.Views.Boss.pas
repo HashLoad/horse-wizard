@@ -9,14 +9,14 @@ type
   TFrmBoss = class(TForm)
     MemoOut: TMemo;
   public
-    procedure AppendText(AText: string);
+    procedure AppendText(const AText: string);
   end;
 
 implementation
 
 {$R *.dfm}
 
-procedure TFrmBoss.AppendText(AText: string);
+procedure TFrmBoss.AppendText(const AText: string);
 begin
   TThread.Synchronize(nil,
   procedure

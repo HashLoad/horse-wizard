@@ -2,11 +2,7 @@ unit Horse.Wizard.Utils;
 
 interface
 
-uses
-  System.SysUtils,
-  System.Classes,
-  ToolsAPI,
-  Vcl.Dialogs;
+uses System.SysUtils, System.Classes, ToolsAPI, Vcl.Dialogs;
 
 function UnitEditor: IOTASourceEditor;
 function EditorAsString: string;
@@ -16,9 +12,9 @@ implementation
 
 function EditorAsStringList: TStringList;
 begin
-  result := TStringList.Create;
+  Result := TStringList.Create;
   try
-    result.Text := EditorAsString;
+    Result.Text := EditorAsString;
   except
     Result.Free;
     raise;
@@ -26,39 +22,39 @@ begin
 end;
 
 function EditorAsString: string;
-Const
-  iBufferSize : Integer = 1024;
+const
+  iBufferSize: Integer = 1024;
 var
-  Reader : IOTAEditReader;
-  iRead : Integer;
-  iPosition : Integer;
-  strBuffer : AnsiString;
+  LEditReader: IOTAEditReader;
+  LRead: Integer;
+  LPosition: Integer;
+  LStringBuffer: AnsiString;
 begin
-  Result := '';
-  Reader := UnitEditor.CreateReader;
-  Try
-    iPosition := 0;
-    Repeat
-      SetLength(strBuffer, iBufferSize);
-      iRead := Reader.GetText(iPosition, PAnsiChar(strBuffer), iBufferSize);
-      SetLength(strBuffer, iRead);
-      Result := Result + String(strBuffer);
-      Inc(iPosition, iRead);
-    Until iRead < iBufferSize;
-  Finally
-    Reader := Nil;
-  End;
+  Result := EmptyStr;
+  LEditReader := UnitEditor.CreateReader;
+  try
+    LPosition := 0;
+    repeat
+      SetLength(LStringBuffer, iBufferSize);
+      LRead := LEditReader.GetText(LPosition, PAnsiChar(LStringBuffer), iBufferSize);
+      SetLength(LStringBuffer, LRead);
+      Result := Result + string(LStringBuffer);
+      Inc(LPosition, LRead);
+    until LRead < iBufferSize;
+  finally
+    LEditReader := nil;
+  end;
 end;
 
 function UnitEditor: IOTASourceEditor;
 var
-  module: IOTAModule;
-  i: Integer;
+  LModule: IOTAModule;
+  I: Integer;
 begin
-  module := (BorlandIDEServices as IOTAModuleServices).CurrentModule;
-  for i := 0 to Pred(module.ModuleFileCount) do
+  LModule := (BorlandIDEServices as IOTAModuleServices).CurrentModule;
+  for I := 0 to Pred(LModule.ModuleFileCount) do
   begin
-    if module.ModuleFileEditors[i].QueryInterface(IOTASourceEditor, result) = S_OK then
+    if LModule.ModuleFileEditors[I].QueryInterface(IOTASourceEditor, Result) = S_OK then
       Break;
   end;
 end;

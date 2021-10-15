@@ -2,11 +2,8 @@ unit Horse.NewController.View;
 
 interface
 
-uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
-  Vcl.StdCtrls,
-  Horse.NewController.Model;
+uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Vcl.StdCtrls, Horse.NewController.Model;
 
 type
   THorseViewsNewController = class(TForm)
@@ -24,12 +21,9 @@ type
     edtRoute: TEdit;
     Label1: TLabel;
     procedure edtControllerNameChange(Sender: TObject);
-  private
-    { Private declarations }
   public
-    function GetController: THorseNewControllerModel;
-
     { Public declarations }
+    function GetController: THorseNewControllerModel;
   end;
 
 var
@@ -48,17 +42,17 @@ end;
 
 function THorseViewsNewController.GetController: THorseNewControllerModel;
 begin
-  result := THorseNewControllerModel.Create;
+  Result := THorseNewControllerModel.Create;
   try
-    result.controllerName := edtControllerName.Text;
-    result.route := edtRoute.Text;
-    result.GET := chkGET.Checked;
-    result.GETID := chkGETID.Checked;
-    result.POST := chkPOST.Checked;
-    result.DELETE := chkDELETE.Checked;
-    result.PUT := chkPUT.Checked;
+    Result.ControllerName := edtControllerName.Text;
+    Result.Route := edtRoute.Text;
+    Result.Get := chkGET.Checked;
+    Result.GetById := chkGETID.Checked;
+    Result.Post := chkPOST.Checked;
+    Result.Delete := chkDELETE.Checked;
+    Result.Put := chkPUT.Checked;
   except
-    result.Free;
+    Result.Free;
     raise;
   end;
 end;

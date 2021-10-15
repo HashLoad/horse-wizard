@@ -32,8 +32,6 @@ type
 
 implementation
 
-uses Horse.CodeGen.Templates;
-
 {$R *.dfm}
 
 function TFrmNewProject.GetAddToProjectGroup: Boolean;

@@ -2,13 +2,9 @@ unit Horse.NewProject.View;
 
 interface
 
-uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
-  Vcl.ExtCtrls,
-  Horse.Wizard.Types,
-  Horse.Middlewares,
-  System.Generics.Collections;
+uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls, Horse.Wizard.Types,
+  Horse.Middlewares, System.Generics.Collections;
 
 type
   THorseViewsNewProject = class(TForm)
@@ -36,14 +32,13 @@ type
   private
     { Private declarations }
     procedure SetFrameworks;
-
   public
+    { Public declarations }
     function Port: Integer;
     function HorseFramework: THorseFramework;
     function HorsePlatform: THorsePlatform;
     function GetMiddlewares: TList<IHorseMiddleware>;
     function UseBoss: Boolean;
-    { Public declarations }
   end;
 
 var
@@ -67,50 +62,50 @@ end;
 
 function THorseViewsNewProject.GetMiddlewares: TList<IHorseMiddleware>;
 begin
-  result := TList<IHorseMiddleware>.create;
+  Result := TList<IHorseMiddleware>.Create;
   try
     if chkHorseCORS.Checked then
-      result.Add(THorseMiddlewareCORS.New);
+      Result.Add(THorseMiddlewareCORS.New);
 
     if chkHorseCompression.Checked then
-      result.Add(THorseMiddlewareCompression.New);
+      Result.Add(THorseMiddlewareCompression.New);
 
     if chkJhonson.Checked then
-      result.Add(THorseMiddlewareJohnson.New);
+      Result.Add(THorseMiddlewareJohnson.New);
 
     if chkHorseOctetStream.Checked then
-      result.Add(THorseMiddlewareOctetStream.New);
+      Result.Add(THorseMiddlewareOctetStream.New);
 
     if chkHorseJWT.Checked then
-      result.Add(THorseMiddlewareJWT.New);
+      Result.Add(THorseMiddlewareJWT.New);
 
     if chkHandleException.Checked then
-      result.Add(THorseMiddlewareHandleException.New);
+      Result.Add(THorseMiddlewareHandleException.New);
 
     if chkLogger.Checked then
-      result.Add(THorseMiddlewareLogger.New);
+      Result.Add(THorseMiddlewareLogger.New);
 
     if chkHorseBasicAuth.Checked then
-      result.Add(THorseMiddlewareBasicAuth.New);
+      Result.Add(THorseMiddlewareBasicAuth.New);
   except
-    result.free;
+    Result.Free;
     raise;
   end;
 end;
 
 function THorseViewsNewProject.HorseFramework: THorseFramework;
 begin
-  result.FromString(edtFramework.Text);
+  Result.FromString(edtFramework.Text);
 end;
 
 function THorseViewsNewProject.HorsePlatform: THorsePlatform;
 begin
-  result.FromString(edtTarget.Text);
+  Result.FromString(edtTarget.Text);
 end;
 
 function THorseViewsNewProject.Port: Integer;
 begin
-  result := StrToIntDef(edtPort.Text, 9000);
+  Result := StrToIntDef(edtPort.Text, 9000);
 end;
 
 procedure THorseViewsNewProject.SetFrameworks;
@@ -137,13 +132,11 @@ begin
     edtFramework.Items.Delete(1);
     edtFramework.ItemIndex := 1;
   end;
-
-
 end;
 
 function THorseViewsNewProject.UseBoss: Boolean;
 begin
-  result := chkUseBoss.Checked;
+  Result := chkUseBoss.Checked;
 end;
 
 end.

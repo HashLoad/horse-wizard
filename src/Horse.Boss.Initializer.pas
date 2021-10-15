@@ -2,11 +2,7 @@ unit Horse.Boss.Initializer;
 
 interface
 
-uses
-  ToolsAPI,
-  Horse.Middlewares,
-  System.Generics.Collections,
-  System.Classes;
+uses ToolsAPI, Horse.Middlewares, System.Generics.Collections, System.Classes;
 
 type
   THorseBossInitializer = class
@@ -18,7 +14,7 @@ type
     procedure RunBossInstall;
     procedure ReloadProject;
   public
-    constructor Create(AProject: IOTAProject; AModules: TList<IHorseMiddleware>);
+    constructor Create(const AProject: IOTAProject; const AModules: TList<IHorseMiddleware>);
     procedure Generate;
     procedure Wait;
   end;
@@ -47,7 +43,7 @@ const
 
 { THorseBossInitializer }
 
-constructor THorseBossInitializer.Create(AProject: IOTAProject; AModules: TList<IHorseMiddleware>);
+constructor THorseBossInitializer.Create(const AProject: IOTAProject; const AModules: TList<IHorseMiddleware>);
 begin
   FProject := AProject;
   FModules := AModules;
@@ -77,12 +73,12 @@ end;
 function THorseBossInitializer.GetDependencies: string;
 var
   LList: string;
-  i: Integer;
+  I: Integer;
 begin
   LList := EmptyStr;
 
-  for i := 0 to Pred(FModules.Count) do
-    LList := LList + Format(BOSS_MODULE_DEFAULT, [FModules[i].Url]) + ',' + sLineBreak;
+  for I := 0 to Pred(FModules.Count) do
+    LList := LList + Format(BOSS_MODULE_DEFAULT, [FModules[I].Url]) + ',' + sLineBreak;
 
   LList := LList + Format(BOSS_MODULE_DEFAULT, [HORSE_MODULE]);
   Result := LList;
@@ -100,20 +96,22 @@ var
 begin
   LDosCommand := TDosCommand.Create(nil);
   LBossView := TFrmBoss.Create(nil);
-  LDosCommand.OnNewLine := procedure(ASender: TObject; const ANewLine: string; AOutputType: TOutputType)
+  LDosCommand.OnNewLine :=
+    procedure(ASender: TObject; const ANewLine: string; AOutputType: TOutputType)
     begin
       LBossView.AppendText(ANewLine);
     end;
 
-  LDosCommand.OnTerminated := procedure(ASender: TObject)
+  LDosCommand.OnTerminated :=
+    procedure(ASender: TObject)
     begin
       LDosCommand.Free;
       TThread.Queue(nil,
-      procedure
-      begin
-        LBossView.Close;
-        LBossView.Free;
-      end);
+        procedure
+        begin
+          LBossView.Close;
+          LBossView.Free;
+        end);
       ReloadProject;
       FLocked := False;
     end;

@@ -409,7 +409,7 @@ object HorseViewsNewProject: THorseViewsNewProject
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 200
+    Left = 191
     Top = 160
     Width = 64
     Height = 17
@@ -422,7 +422,7 @@ object HorseViewsNewProject: THorseViewsNewProject
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 416
+    Left = 398
     Top = 160
     Width = 24
     Height = 17
@@ -468,7 +468,7 @@ object HorseViewsNewProject: THorseViewsNewProject
       'Linux')
   end
   object edtFramework: TComboBox
-    Left = 200
+    Left = 191
     Top = 180
     Width = 201
     Height = 25
@@ -514,9 +514,9 @@ object HorseViewsNewProject: THorseViewsNewProject
     TabOrder = 4
   end
   object edtPort: TEdit
-    Left = 416
+    Left = 398
     Top = 180
-    Width = 81
+    Width = 93
     Height = 25
     TabOrder = 2
     Text = '9000'
@@ -642,7 +642,7 @@ object HorseViewsNewProject: THorseViewsNewProject
     TabOrder = 12
   end
   object chkUseBoss: TCheckBox
-    Left = 432
+    Left = 430
     Top = 223
     Width = 61
     Height = 17

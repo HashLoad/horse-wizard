@@ -2,19 +2,11 @@ unit Horse.NewProject.Wizard;
 
 interface
 
-uses
-  Horse.NewProject,
-  Horse.NewProject.View,
-  Horse.Middlewares,
-  System.Generics.Collections,
-  ToolsAPI,
-  Winapi.Windows,
+uses Horse.NewProject, Horse.NewProject.View, Horse.Middlewares, System.Generics.Collections, ToolsAPI, Winapi.Windows,
   Vcl.Controls;
 
-type THorseNewProjectWizard = class(TNotifierObject, IOTAWizard,
-                                                     IOTAProjectWizard,
-                                                     IOTARepositoryWizard)
-
+type
+  THorseNewProjectWizard = class(TNotifierObject, IOTAWizard, IOTAProjectWizard, IOTARepositoryWizard)
   protected
     // IOTAWizard
     function GetIDString: string;
@@ -27,10 +19,9 @@ type THorseNewProjectWizard = class(TNotifierObject, IOTAWizard,
     function GetComment: string;
     function GetPage: string;
     function GetGlyph: Cardinal;
-
   public
     class function New: IOTAWizard;
-end;
+  end;
 
 implementation
 
@@ -38,69 +29,69 @@ implementation
 
 procedure THorseNewProjectWizard.Execute;
 var
-  form: THorseViewsNewProject;
-  middlewares: TList<IHorseMiddleware>;
+  LForm: THorseViewsNewProject;
+  LMiddlewares: TList<IHorseMiddleware>;
 begin
-  form := THorseViewsNewProject.Create(nil);
+  LForm := THorseViewsNewProject.Create(nil);
   try
-    form.ShowModal;
-    if form.ModalResult = mrOK then
+    LForm.ShowModal;
+    if LForm.ModalResult = mrOK then
     begin
-      middlewares := form.GetMiddlewares;
+      LMiddlewares := LForm.GetMiddlewares;
       try
-        THorseNewProject.UseBoss(form.UseBoss);
-        THorseNewProject.Port(form.Port);
-        THorseNewProject.Framework(form.HorseFramework);
-        THorseNewProject.&Platform(form.HorsePlatform);
-        THorseNewProject.Middlewares(middlewares);
+        THorseNewProject.UseBoss(LForm.UseBoss);
+        THorseNewProject.Port(LForm.Port);
+        THorseNewProject.Framework(LForm.HorseFramework);
+        THorseNewProject.&Platform(LForm.HorsePlatform);
+        THorseNewProject.Middlewares(LMiddlewares);
         THorseNewProject.Execute;
       finally
-        middlewares.Free;
+        LMiddlewares.Free;
       end;
     end;
   finally
-    form.Free;
+    LForm.Free;
   end;
 end;
 
 function THorseNewProjectWizard.GetAuthor: string;
 begin
-  result := 'Horse - https://github.com/HashLoad/horse';
+  Result := 'Horse - https://github.com/HashLoad/horse';
 end;
 
 function THorseNewProjectWizard.GetComment: string;
 begin
-  result := 'Create a new Horse Project';
+  Result := 'Create a new Horse Project';
 end;
 
 function THorseNewProjectWizard.GetGlyph: Cardinal;
 begin
-  result := LoadIcon(HInstance, 'HashloadIcon');
+  Result := LoadIcon(HInstance, 'HashloadIcon');
 end;
 
 function THorseNewProjectWizard.GetIDString: string;
 begin
-  result := Self.ClassName;
+  Result := Self.ClassName;
 end;
 
 function THorseNewProjectWizard.GetName: string;
 begin
-  result := 'Horse Project';
+  Result := 'Horse Project';
 end;
 
 function THorseNewProjectWizard.GetPage: string;
 begin
-  result := 'Horse';
+  Result := 'Horse';
 end;
 
 function THorseNewProjectWizard.GetState: TWizardState;
 begin
-  result := [wsEnabled];
+  Result := [wsEnabled];
 end;
 
 class function THorseNewProjectWizard.New: IOTAWizard;
 begin
-  result := Self.Create;
+  Result := Self.Create;
 end;
 
 end.

@@ -1,7 +1,6 @@
 package horse_wizard;
 
 {$R *.res}
-{$R *.dres}
 {$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
 {$ALIGN 8}
 {$ASSERTIONS ON}
@@ -37,34 +36,36 @@ requires
   IndyProtocols,
   IndyCore,
   dbrtl,
-  DOSCommandDD{BOSS},
-  DOSCommandDR{BOSS};
+  DOSCommandDD,
+  DOSCommandDR;
 
 contains
-  Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
-  Horse.Registration in 'src\Horse.Registration.pas',
   Horse.Boss.Initializer in 'src\Horse.Boss.Initializer.pas',
-  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
-  Horse.NewProject.View in 'src\Horse.NewProject.View.pas' {HorseViewsNewProject},
-  Horse.NewProject.Templates in 'src\Horse.NewProject.Templates.pas',
-  Horse.Wizard.Types in 'src\Horse.Wizard.Types.pas',
+  Horse.CodeGen.SourceFile in 'src\Horse.CodeGen.SourceFile.pas',
+  Horse.Middlewares in 'src\Horse.Middlewares.pas',
+  Horse.NewController.Binding in 'src\Horse.NewController.Binding.pas',
+  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas',
+  Horse.NewController.Model in 'src\Horse.NewController.Model.pas',
+  Horse.NewController in 'src\Horse.NewController.pas',
+  Horse.NewController.View in 'src\Horse.NewController.View.pas' {HorseViewsNewController},
+  Horse.NewController.Wizard in 'src\Horse.NewController.Wizard.pas',
+  Horse.NewProject.Creator.Apache in 'src\Horse.NewProject.Creator.Apache.pas',
   Horse.NewProject.Creator in 'src\Horse.NewProject.Creator.pas',
-  Horse.NewProject.Creator.Vcl.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas',
   Horse.NewProject.Creator.Vcl.NewForm.Main in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.pas',
+  Horse.NewProject.Creator.Vcl.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas',
   Horse.NewProject.Creator.Vcl in 'src\Horse.NewProject.Creator.Vcl.pas',
-  Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas',
   Horse.NewProject.Creator.WinSvc.NewForm.Main in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas',
+  Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates in 'src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas',
   Horse.NewProject.Creator.WinSvc in 'src\Horse.NewProject.Creator.WinSvc.pas',
   Horse.NewProject in 'src\Horse.NewProject.pas',
+  Horse.NewProject.Templates in 'src\Horse.NewProject.Templates.pas',
+  Horse.NewProject.View in 'src\Horse.NewProject.View.pas' {HorseViewsNewProject},
   Horse.NewProject.Wizard in 'src\Horse.NewProject.Wizard.pas',
-  Horse.Middlewares in 'src\Horse.Middlewares.pas',
-  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas',
-  Horse.NewController.View in 'src\Horse.NewController.View.pas' {HorseViewsNewController},
-  Horse.NewController.Model in 'src\Horse.NewController.Model.pas',
-  Horse.NewController.Wizard in 'src\Horse.NewController.Wizard.pas',
-  Horse.NewController.Creator in 'src\Horse.NewController.Creator.pas',
-  Horse.NewController.Binding in 'src\Horse.NewController.Binding.pas',
-  Horse.NewController in 'src\Horse.NewController.pas',
-  Horse.NewProject.Creator.Apache in 'src\Horse.NewProject.Creator.Apache.pas';
+  Horse.Registration in 'src\Horse.Registration.pas',
+  Horse.Splash.Registration in 'src\Horse.Splash.Registration.pas',
+  Horse.Views.Boss in 'src\Horse.Views.Boss.pas' {FrmBoss},
+  Horse.Views.Wizard in 'src\Horse.Views.Wizard.pas' {FrmNewProject},
+  Horse.Wizard.Types in 'src\Horse.Wizard.Types.pas',
+  Horse.Wizard.Utils in 'src\Horse.Wizard.Utils.pas';
 
 end.

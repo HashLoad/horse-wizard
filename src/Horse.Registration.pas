@@ -2,13 +2,7 @@ unit Horse.Registration;
 
 interface
 
-uses
-  ToolsApi,
-  DesignIntf,
-  System.SysUtils,
-  Winapi.Windows,
-  Horse.NewController.Wizard,
-  Horse.NewController.Binding,
+uses ToolsApi, DesignIntf, System.SysUtils, Winapi.Windows, Horse.NewController.Wizard, Horse.NewController.Binding,
   Horse.NewProject.Wizard;
 
 var
@@ -28,7 +22,6 @@ begin
   RegisterPackageWizard(THorseNewProjectWizard.New);
   RegisterPackageWizard(THorseNewControllerWizard.New);
   RegisterNewControllerBinding;
-
 end;
 
 initialization

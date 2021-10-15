@@ -392,7 +392,7 @@ object HorseViewsNewController: THorseViewsNewController
       8483209420E120083B4838084209120E82B0838483209420E120083B48380842
       09120E8220084213241C04411084264838088220084D9070100441109A20E120
       08822034F1FF0160616E4FB1E68DCD0000000049454E44AE426082}
-    ExplicitWidth = 631
+    ExplicitLeft = -1
   end
   object Label3: TLabel
     Left = 16
@@ -421,7 +421,7 @@ object HorseViewsNewController: THorseViewsNewController
     ParentFont = False
   end
   object Label1: TLabel
-    Left = 184
+    Left = 175
     Top = 152
     Width = 34
     Height = 17
@@ -485,7 +485,7 @@ object HorseViewsNewController: THorseViewsNewController
     Width = 171
     Height = 17
     Anchors = [akLeft, akTop, akRight]
-    Caption = 'GET ID'
+    Caption = 'GET BY ID'
     Checked = True
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -548,9 +548,9 @@ object HorseViewsNewController: THorseViewsNewController
     TabOrder = 6
   end
   object edtRoute: TEdit
-    Left = 184
+    Left = 175
     Top = 172
-    Width = 249
+    Width = 255
     Height = 25
     TabOrder = 1
   end

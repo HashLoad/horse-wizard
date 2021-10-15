@@ -117,37 +117,45 @@
         <DCCReference Include="dbrtl.dcp"/>
         <DCCReference Include="DOSCommandDD.dcp"/>
         <DCCReference Include="DOSCommandDR.dcp"/>
-        <DCCReference Include="src\Horse.CodeGen.SourceFile.pas"/>
-        <DCCReference Include="src\Horse.Registration.pas"/>
         <DCCReference Include="src\Horse.Boss.Initializer.pas"/>
-        <DCCReference Include="src\Horse.Views.Boss.pas">
-            <Form>FrmBoss</Form>
-        </DCCReference>
-        <DCCReference Include="src\Horse.NewProject.View.pas">
-            <Form>HorseViewsNewProject</Form>
-        </DCCReference>
-        <DCCReference Include="src\Horse.NewProject.Templates.pas"/>
-        <DCCReference Include="src\Horse.Wizard.Types.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.NewForm.Main.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.pas"/>
-        <DCCReference Include="src\Horse.NewProject.pas"/>
-        <DCCReference Include="src\Horse.NewProject.Wizard.pas"/>
+        <DCCReference Include="src\Horse.CodeGen.SourceFile.pas"/>
         <DCCReference Include="src\Horse.Middlewares.pas"/>
-        <DCCReference Include="src\Horse.Wizard.Utils.pas"/>
+        <DCCReference Include="src\Horse.NewController.Binding.pas"/>
+        <DCCReference Include="src\Horse.NewController.Creator.pas"/>
+        <DCCReference Include="src\Horse.NewController.Model.pas"/>
+        <DCCReference Include="src\Horse.NewController.pas"/>
         <DCCReference Include="src\Horse.NewController.View.pas">
             <Form>HorseViewsNewController</Form>
+            <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\Horse.NewController.Model.pas"/>
         <DCCReference Include="src\Horse.NewController.Wizard.pas"/>
-        <DCCReference Include="src\Horse.NewController.Creator.pas"/>
-        <DCCReference Include="src\Horse.NewController.Binding.pas"/>
-        <DCCReference Include="src\Horse.NewController.pas"/>
         <DCCReference Include="src\Horse.NewProject.Creator.Apache.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.NewForm.Main.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.NewForm.Main.Templates.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.Vcl.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.NewForm.Main.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Creator.WinSvc.pas"/>
+        <DCCReference Include="src\Horse.NewProject.pas"/>
+        <DCCReference Include="src\Horse.NewProject.Templates.pas"/>
+        <DCCReference Include="src\Horse.NewProject.View.pas">
+            <Form>HorseViewsNewProject</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Horse.NewProject.Wizard.pas"/>
+        <DCCReference Include="src\Horse.Registration.pas"/>
+        <DCCReference Include="src\Horse.Splash.Registration.pas"/>
+        <DCCReference Include="src\Horse.Views.Boss.pas">
+            <Form>FrmBoss</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Horse.Views.Wizard.pas">
+            <Form>FrmNewProject</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\Horse.Wizard.Types.pas"/>
+        <DCCReference Include="src\Horse.Wizard.Utils.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -179,7 +187,7 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="C:\Users\Public\Documents\Embarcadero\Studio\21.0\Bpl\horse_wizard.bpl" Configuration="Release" Class="ProjectOutput">
+                <DeployFile LocalName="..\..\..\Public\Documents\Embarcadero\Studio\20.0\Bpl\horse_wizard.bpl" Configuration="Release" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>horse_wizard.bpl</RemoteName>
                         <Overwrite>true</Overwrite>
@@ -229,17 +237,9 @@
                         <RemoteDir>classes</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>classes</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidFileProvider">
                     <Platform Name="Android">
-                        <RemoteDir>res\xml</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\xml</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -255,10 +255,6 @@
                         <RemoteDir>library\lib\armeabi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\armeabi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidLibnativeArmeabiv7aFile">
                     <Platform Name="Android64">
@@ -271,18 +267,10 @@
                         <RemoteDir>library\lib\mips</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\mips</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidServiceOutput">
                     <Platform Name="Android">
                         <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
@@ -297,17 +285,9 @@
                         <RemoteDir>res\drawable</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="AndroidSplashStyles">
                     <Platform Name="Android">
-                        <RemoteDir>res\values</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -317,17 +297,9 @@
                         <RemoteDir>res\values-v21</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\values-v21</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_Colors">
                     <Platform Name="Android">
-                        <RemoteDir>res\values</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -337,17 +309,9 @@
                         <RemoteDir>res\drawable</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_LauncherIcon144">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-xxhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -367,17 +331,9 @@
                         <RemoteDir>res\drawable-ldpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-ldpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_LauncherIcon48">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-mdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-mdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -387,17 +343,9 @@
                         <RemoteDir>res\drawable-hdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-hdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_LauncherIcon96">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-xhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -407,17 +355,9 @@
                         <RemoteDir>res\drawable-mdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-mdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon36">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-hdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-hdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -427,17 +367,9 @@
                         <RemoteDir>res\drawable-xhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-xhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_NotificationIcon72">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-xxhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-xxhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -447,17 +379,9 @@
                         <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-xxxhdpi</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_SplashImage426">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-small</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-small</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -467,17 +391,9 @@
                         <RemoteDir>res\drawable-normal</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-normal</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_SplashImage640">
                     <Platform Name="Android">
-                        <RemoteDir>res\drawable-large</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\drawable-large</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -487,17 +403,9 @@
                         <RemoteDir>res\drawable-xlarge</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>res\drawable-xlarge</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="Android_Strings">
                     <Platform Name="Android">
-                        <RemoteDir>res\values</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <RemoteDir>res\values</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -568,9 +476,6 @@
                 </DeployClass>
                 <DeployClass Name="File">
                     <Platform Name="Android">
-                        <Operation>0</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">
@@ -1100,9 +1005,6 @@
                     <Platform Name="Android">
                         <Operation>1</Operation>
                     </Platform>
-                    <Platform Name="Android64">
-                        <Operation>1</Operation>
-                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectiOSDeviceDebug">
                     <Platform Name="iOSDevice32">
@@ -1145,10 +1047,6 @@
                 <DeployClass Required="true" Name="ProjectOutput">
                     <Platform Name="Android">
                         <RemoteDir>library\lib\armeabi-v7a</RemoteDir>
-                        <Operation>1</Operation>
-                    </Platform>
-                    <Platform Name="Android64">
-                        <RemoteDir>library\lib\arm64-v8a</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="iOSDevice32">

@@ -2,24 +2,17 @@ unit Horse.NewProject.Creator.WinSvc.NewForm.Main;
 
 interface
 
-uses
-  ToolsAPI,
-  Horse.CodeGen.SourceFile,
-  Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates,
-  System.SysUtils;
+uses ToolsAPI, Horse.CodeGen.SourceFile, Horse.NewProject.Creator.WinSvc.NewForm.Main.Templates, System.SysUtils;
 
-type THorseNewProjectWinSvcNewFormMain = class(TNotifierObject, IOTACreator,
-                                                                IOTAModuleCreator)
-
+type
+  THorseNewProjectWinSvcNewFormMain = class(TNotifierObject, IOTACreator, IOTAModuleCreator)
   protected
     FPort: Integer;
-
     function GetCreatorType: string;
     function GetExisting: Boolean;
     function GetFileSystem: string;
     function GetOwner: IOTAModule;
     function GetUnnamed: Boolean;
-
     function GetAncestorName: string;
     { Return the implementation filename, or blank to have the IDE create a new
       unique one. (C++ .cpp file or Delphi unit) NOTE: If a value is returned then it *must* be a
@@ -27,7 +20,7 @@ type THorseNewProjectWinSvcNewFormMain = class(TNotifierObject, IOTACreator,
       GetAdditionalFileName on the IOTAAdditionalFilesModuleCreator interface. }
     function GetImplFileName: string;
     { Return the interface filename, or blank to have the IDE create a new
-      unique one.  (C++ header) }
+      unique one. (C++ header) }
     function GetIntfFileName: string;
     { Return the form name }
     function GetFormName: string;
@@ -38,112 +31,112 @@ type THorseNewProjectWinSvcNewFormMain = class(TNotifierObject, IOTACreator,
     { Return True to show the source }
     function GetShowSource: Boolean;
     { Create and return the Form resource for this new module if applicable }
-    function NewFormFile(const FormIdent, AncestorIdent: string): IOTAFile;
+    function NewFormFile(const AFormIdent, AAncestorIdent: string): IOTAFile;
     { Create and return the Implementation source for this module. (C++ .cpp
       file or Delphi unit) }
-    function NewImplSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
+    function NewImplSource(const AModuleIdent, AFormIdent, AAncestorIdent: string): IOTAFile;
     { Create and return the Interface (C++ header) source for this module }
-    function NewIntfSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
+    function NewIntfSource(const AModuleIdent, AFormIdent, AAncestorIdent: string): IOTAFile;
     { Called when the new form/datamodule/custom module is created }
-    procedure FormCreated(const FormEditor: IOTAFormEditor);
-
+    procedure FormCreated(const AFormEditor: IOTAFormEditor);
   public
-    constructor create(Port: Integer);
-    class function New(Port: Integer): IOTACreator;
-end;
+    constructor Create(const APort: Integer);
+    class function New(const APort: Integer): IOTACreator;
+  end;
 
 implementation
 
 { THorseNewProjectWinSvcNewFormMain }
 
-constructor THorseNewProjectWinSvcNewFormMain.create(Port: Integer);
+constructor THorseNewProjectWinSvcNewFormMain.Create(const APort: Integer);
 begin
-  FPort := Port;
+  FPort := APort;
   (BorlandIDEServices as IOTAModuleServices).CreateModule(Self);
 end;
 
-procedure THorseNewProjectWinSvcNewFormMain.FormCreated(const FormEditor: IOTAFormEditor);
+procedure THorseNewProjectWinSvcNewFormMain.FormCreated(const AFormEditor: IOTAFormEditor);
 begin
+
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetAncestorName: string;
 begin
-  result := 'TForm';
+  Result := 'TForm';
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetCreatorType: string;
 begin
-  result := sForm;
+  Result := sForm;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetExisting: Boolean;
 begin
-  result := False;
+  Result := False;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetFileSystem: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetFormName: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetImplFileName: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetIntfFileName: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetMainForm: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetOwner: IOTAModule;
 begin
-  result := GetActiveProject;
+  Result := GetActiveProject;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetShowForm: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetShowSource: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
 function THorseNewProjectWinSvcNewFormMain.GetUnnamed: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
-class function THorseNewProjectWinSvcNewFormMain.New(Port: Integer): IOTACreator;
+class function THorseNewProjectWinSvcNewFormMain.New(const APort: Integer): IOTACreator;
 begin
-  result := Self.create(Port);
+  Result := Self.create(APort);
 end;
 
-function THorseNewProjectWinSvcNewFormMain.NewFormFile(const FormIdent, AncestorIdent: string): IOTAFile;
+function THorseNewProjectWinSvcNewFormMain.NewFormFile(const AFormIdent, AAncestorIdent: string): IOTAFile;
 begin
-  result := TSourceFile.Create(sHorseWinSvcMainFormDFM, []);
+  Result := TSourceFile.Create(sHorseWinSvcMainFormDFM, []);
 end;
 
-function THorseNewProjectWinSvcNewFormMain.NewImplSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
+function THorseNewProjectWinSvcNewFormMain.NewImplSource(const AModuleIdent, AFormIdent, AAncestorIdent: string): IOTAFile;
 begin
-  result := TSourceFile.Create(sHorseWinSvcMainFormPAS, [ModuleIdent, FPort.ToString]);
+  Result := TSourceFile.Create(sHorseWinSvcMainFormPAS, [AModuleIdent, FPort.ToString]);
 end;
 
-function THorseNewProjectWinSvcNewFormMain.NewIntfSource(const ModuleIdent, FormIdent, AncestorIdent: string): IOTAFile;
+function THorseNewProjectWinSvcNewFormMain.NewIntfSource(const AModuleIdent, AFormIdent, AAncestorIdent: string): IOTAFile;
 begin
-  result := nil;
+  Result := nil;
 end;
 
 end.

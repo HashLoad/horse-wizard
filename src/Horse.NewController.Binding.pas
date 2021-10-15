@@ -2,31 +2,23 @@ unit Horse.NewController.Binding;
 
 interface
 
-uses
-  ToolsAPI,
-  Horse.NewController,
-  System.SysUtils,
-  System.Classes,
-  Vcl.Dialogs,
-  Vcl.Menus;
+uses ToolsAPI, Horse.NewController, System.SysUtils, System.Classes, Vcl.Dialogs, Vcl.Menus;
 
-type THorseNewControllerBinding = class(TNotifierObject, IOTAKeyboardBinding)
-
+type
+  THorseNewControllerBinding = class(TNotifierObject, IOTAKeyboardBinding)
   private
     procedure Execute(const Context: IOTAKeyContext; KeyCode: TShortcut; var BindingResult: TKeyBindingResult);
-
   protected
-    function GetBindingType : TBindingType;
-    function GetDisplayName : string;
-    function GetName        : string;
+    function GetBindingType: TBindingType;
+    function GetDisplayName: string;
+    function GetName: string;
     procedure BindKeyboard(const BindingServices: IOTAKeyBindingServices);
-
   public
     class function New: IOTAKeyboardBinding;
-end;
+  end;
 
 var
-  IndexNewControllerBinding : Integer = -1;
+  IndexNewControllerBinding: Integer = -1;
 
 procedure RegisterNewControllerBinding;
 
@@ -34,8 +26,7 @@ implementation
 
 procedure RegisterNewControllerBinding;
 begin
-  IndexNewControllerBinding := (BorlandIDEServices as IOTAKeyboardServices)
-    .AddKeyboardBinding(THorseNewControllerBinding.New);
+  IndexNewControllerBinding := (BorlandIDEServices as IOTAKeyboardServices).AddKeyboardBinding(THorseNewControllerBinding.New);
 end;
 
 { THorseNewControllerBinding }
@@ -48,35 +39,33 @@ end;
 procedure THorseNewControllerBinding.Execute(const Context: IOTAKeyContext; KeyCode: TShortcut; var BindingResult: TKeyBindingResult);
 begin
   BindingResult := krHandled;
-
   THorseNewController.CreateController;
 end;
 
 function THorseNewControllerBinding.GetBindingType: TBindingType;
 begin
-  result := btPartial;
+  Result := btPartial;
 end;
 
 function THorseNewControllerBinding.GetDisplayName: string;
 begin
-  result := Self.ClassName;
+  Result := Self.ClassName;
 end;
 
 function THorseNewControllerBinding.GetName: string;
 begin
-  result := Self.ClassName;
+  Result := Self.ClassName;
 end;
 
 class function THorseNewControllerBinding.New: IOTAKeyboardBinding;
 begin
-  result := Self.Create;
+  Result := Self.Create;
 end;
 
 initialization
 
 finalization
   if IndexNewControllerBinding >= 0 then
-    (BorlandIDEServices as IOTAKeyboardServices)
-      .RemoveKeyboardBinding(IndexNewControllerBinding);
+    (BorlandIDEServices as IOTAKeyboardServices).RemoveKeyboardBinding(IndexNewControllerBinding);
 
 end.

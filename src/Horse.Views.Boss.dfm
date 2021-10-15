@@ -31,7 +31,5 @@ object FrmBoss: TFrmBoss
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 878
-    ExplicitHeight = 449
   end
 end

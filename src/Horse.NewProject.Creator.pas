@@ -2,19 +2,11 @@ unit Horse.NewProject.Creator;
 
 interface
 
-uses
-  DCCStrs,
-  Horse.Wizard.Types,
-  Horse.CodeGen.SourceFile,
-  ToolsAPI,
-  System.SysUtils;
+uses DCCStrs, Horse.Wizard.Types, Horse.CodeGen.SourceFile, ToolsAPI, System.SysUtils;
 
-type THorseNewProjectCreator = class(TNotifierObject, IOTACreator,
-                                                      IOTAProjectCreator,
-                                                      IOTAProjectCreator80,
-                                                      IOTAProjectCreator160,
-                                                      IOTAProjectCreator190)
-
+type
+  THorseNewProjectCreator = class(TNotifierObject, IOTACreator, IOTAProjectCreator, IOTAProjectCreator80, IOTAProjectCreator160,
+    IOTAProjectCreator190)
   protected
     FPlatform: THorsePlatform;
     FFramework: THorseFramework;
@@ -32,32 +24,29 @@ type THorseNewProjectCreator = class(TNotifierObject, IOTACreator,
     function GetOptionFileName: string;
     function GetShowSource: Boolean;
     procedure NewDefaultModule;
-    function NewOptionSource(const ProjectName: string): IOTAFile;
-    procedure NewProjectResource(const Project: IOTAProject);
-    procedure NewDefaultProjectModule(const Project: IOTAProject);
+    function NewOptionSource(const AProjectName: string): IOTAFile;
+    procedure NewProjectResource(const AProject: IOTAProject);
+    procedure NewDefaultProjectModule(const AProject: IOTAProject);
+
     { Create and return the Project source file }
-    function NewProjectSource(const ProjectName: string): IOTAFile;
+    function NewProjectSource(const AProjectName: string): IOTAFile;
 
     function GetProjectPersonality: string;
-
     function GetFrameworkType: string;
     function GetPlatforms: TArray<string>;
     function GetSupportedPlatforms: TArray<string>;
     function GetPreferredPlatform: string;
-
-    procedure SetInitialOptions(const NewProject: IOTAProject); virtual;
-
+    procedure SetInitialOptions(const ANewProject: IOTAProject); virtual;
   public
-    constructor create(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer);
-    class function New(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer): IOTACreator;
-
-end;
+    constructor Create(const APlatform: THorsePlatform; const AFramework: THorseFramework; const APort: Integer);
+    class function New(const APlatform: THorsePlatform; const AFramework: THorseFramework; const APort: Integer): IOTACreator;
+  end;
 
 implementation
 
 { THorseNewProjectCreator }
 
-constructor THorseNewProjectCreator.create(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer);
+constructor THorseNewProjectCreator.Create(const APlatform: THorsePlatform; const AFramework: THorseFramework; const APort: Integer);
 begin
   FPlatform := APlatform;
   FFramework := AFramework;
@@ -66,7 +55,7 @@ end;
 
 function THorseNewProjectCreator.GetCreatorType: string;
 begin
-  result := FFramework.ProjectType;
+  Result := FFramework.ProjectType;
 end;
 
 function THorseNewProjectCreator.GetExisting: Boolean;
@@ -76,47 +65,47 @@ end;
 
 function THorseNewProjectCreator.GetFileName: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectCreator.GetFileSystem: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectCreator.GetFrameworkType: string;
 begin
-  result := FFramework.toString;
+  Result := FFramework.ToString;
 end;
 
 function THorseNewProjectCreator.GetOptionFileName: string;
 begin
-  result := EmptyStr;
+  Result := EmptyStr;
 end;
 
 function THorseNewProjectCreator.GetOwner: IOTAModule;
 begin
-  result := (BorlandIDEServices as IOTAModuleServices).MainProjectGroup;
+  Result := (BorlandIDEServices as IOTAModuleServices).MainProjectGroup;
 end;
 
 function THorseNewProjectCreator.GetPlatforms: TArray<string>;
 begin
-  result := [GetPreferredPlatform];
+  Result := [GetPreferredPlatform];
 end;
 
 function THorseNewProjectCreator.GetPreferredPlatform: string;
 begin
-  Result := FPlatform.toString;
+  Result := FPlatform.ToString;
 end;
 
 function THorseNewProjectCreator.GetProjectPersonality: string;
 begin
-  result := sDelphiPersonality;
+  Result := sDelphiPersonality;
 end;
 
 function THorseNewProjectCreator.GetShowSource: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
 function THorseNewProjectCreator.GetSupportedPlatforms: TArray<string>;
@@ -126,42 +115,45 @@ end;
 
 function THorseNewProjectCreator.GetUnnamed: Boolean;
 begin
-  result := True;
+  Result := True;
 end;
 
-class function THorseNewProjectCreator.New(APlatform: THorsePlatform; AFramework: THorseFramework; APort: Integer): IOTACreator;
+class function THorseNewProjectCreator.New(const APlatform: THorsePlatform; const AFramework: THorseFramework; const APort: Integer): IOTACreator;
 begin
-  result := Self.create(APlatform, AFramework, APort);
+  Result := Self.create(APlatform, AFramework, APort);
 end;
 
 procedure THorseNewProjectCreator.NewDefaultModule;
 begin
+
 end;
 
-procedure THorseNewProjectCreator.NewDefaultProjectModule(const Project: IOTAProject);
+procedure THorseNewProjectCreator.NewDefaultProjectModule(const AProject: IOTAProject);
 begin
+
 end;
 
-function THorseNewProjectCreator.NewOptionSource(const ProjectName: string): IOTAFile;
+function THorseNewProjectCreator.NewOptionSource(const AProjectName: string): IOTAFile;
 begin
-  result := nil;
+  Result := nil;
 end;
 
-procedure THorseNewProjectCreator.NewProjectResource(const Project: IOTAProject);
+procedure THorseNewProjectCreator.NewProjectResource(const AProject: IOTAProject);
 begin
+
 end;
 
-function THorseNewProjectCreator.NewProjectSource(const ProjectName: string): IOTAFile;
+function THorseNewProjectCreator.NewProjectSource(const AProjectName: string): IOTAFile;
 begin
-  result := TSourceFile.Create(FFramework.DprContent, [ProjectName, FPort.ToString]);
+  Result := TSourceFile.Create(FFramework.DprContent, [AProjectName, FPort.ToString]);
 end;
 
-procedure THorseNewProjectCreator.SetInitialOptions(const NewProject: IOTAProject);
+procedure THorseNewProjectCreator.SetInitialOptions(const ANewProject: IOTAProject);
 var
-  build: IOTABuildConfiguration;
+  LBuild: IOTABuildConfiguration;
 begin
-  build := (NewProject.ProjectOptions as IOTAProjectOptionsConfigurations).BaseConfiguration;
-  build.SetValue(sDefine, FFramework.Define);
+  LBuild := (ANewProject.ProjectOptions as IOTAProjectOptionsConfigurations).BaseConfiguration;
+  LBuild.SetValue(sDefine, FFramework.Define);
 end;
 
 end.

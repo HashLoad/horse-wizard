@@ -2,86 +2,77 @@ unit Horse.NewController;
 
 interface
 
-uses
-  ToolsAPI,
-  Horse.Wizard.Utils,
-  Horse.NewController.Model,
-  Horse.NewController.View,
-  Horse.NewController.Creator,
-  System.Classes,
-  System.SysUtils,
-  Vcl.Controls;
+uses ToolsAPI, Horse.Wizard.Utils, Horse.NewController.Model, Horse.NewController.View, Horse.NewController.Creator,
+  System.Classes, System.SysUtils, Vcl.Controls;
 
-type THorseNewController = class
-
+type
+  THorseNewController = class
   private
-    class procedure RegisterController(AController: THorseNewControllerModel; AModule: IOTAModule);
-
+    class procedure RegisterController(const AController: THorseNewControllerModel; const AModule: IOTAModule);
   public
     class procedure CreateController;
-end;
+  end;
 
 implementation
 
 class procedure THorseNewController.CreateController;
 var
-  form: THorseViewsNewController;
-  controller: THorseNewControllerModel;
-  creator: IOTACreator;
-  module: IOTAModule;
+  LForm: THorseViewsNewController;
+  LController: THorseNewControllerModel;
+  LCreator: IOTACreator;
+  LModule: IOTAModule;
 begin
-  form := THorseViewsNewController.Create(nil);
+  LForm := THorseViewsNewController.Create(nil);
   try
-    form.ShowModal;
-    if form.ModalResult = mrOK then
+    LForm.ShowModal;
+    if LForm.ModalResult = mrOK then
     begin
-      controller := form.GetController;
+      LController := LForm.GetController;
       try
-        creator := THorseNewControllerCreator.New(controller);
-        module := (BorlandIDEServices as IOTAModuleServices).CreateModule(creator);
-        RegisterController(controller, module);
+        LCreator := THorseNewControllerCreator.New(LController);
+        LModule := (BorlandIDEServices as IOTAModuleServices).CreateModule(LCreator);
+        RegisterController(LController, LModule);
       finally
-        controller.Free;
+        LController.Free;
       end;
     end;
   finally
-    form.Free;
+    LForm.Free;
   end;
 end;
 
-class procedure THorseNewController.RegisterController(AController: THorseNewControllerModel; AModule: IOTAModule);
+class procedure THorseNewController.RegisterController(const AController: THorseNewControllerModel; const AModule: IOTAModule);
 var
-  editorList: TStringList;
-  i: Integer;
-  listenPosition: Integer;
-  editView: IOTAEditView;
+  LEditorList: TStringList;
+  I: Integer;
+  LListenPosition: Integer;
+  LEditView: IOTAEditView;
 begin
-  listenPosition := 0;
+  LListenPosition := 0;
   GetActiveProject.ShowFilename(GetActiveProject.FileName);
 
-  editorList := EditorAsStringList;
+  LEditorList := EditorAsStringList;
   try
-    editView := (BorlandIDEServices as IOTAEditorServices).TopView;
-    for i := 0 to Pred(editorList.Count) do
+    LEditView := (BorlandIDEServices as IOTAEditorServices).TopView;
+    for I := 0 to Pred(LEditorList.Count) do
     begin
-      if editorList[i].Trim.ToLower.StartsWith('thorse.listen') then
+      if LEditorList[I].Trim.ToLower.StartsWith('thorse.listen') then
       begin
-        listenPosition := i;
+        LListenPosition := I;
         Break;
       end;
     end;
 
-    if listenPosition > 0 then
+    if LListenPosition > 0 then
     begin
-      editView.Buffer.EditPosition.GotoLine(listenPosition + 1);
-      editView.Buffer.EditPosition.Tab(1);
-      editView.Buffer.EditPosition
-        .InsertText(AController.controllerName + 'Registry;' + Chr(13));
+      LEditView.Buffer.EditPosition.GotoLine(LListenPosition + 1);
+      LEditView.Buffer.EditPosition.Tab(1);
+      LEditView.Buffer.EditPosition.InsertText(AController.ControllerName + 'Registry;' + Chr(13));
     end;
 
     AModule.Show;
   finally
-    editorList.Free;
+    LEditorList.Free;
   end;
 end;
 
