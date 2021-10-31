@@ -2,19 +2,12 @@ unit Horse.Registration;
 
 interface
 
-uses ToolsApi, DesignIntf, System.SysUtils, Winapi.Windows, Horse.NewController.Wizard, Horse.NewController.Binding,
+uses ToolsApi, DesignIntf, System.SysUtils, Horse.NewController.Wizard, Horse.NewController.Binding,
   Horse.NewProject.Wizard;
-
-var
-  bmSplashScreen: HBITMAP;
 
 procedure register;
 
 implementation
-
-resourcestring
-  resPackageName = 'Horse';
-  resLicense = 'MIT License';
 
 procedure Register;
 begin
@@ -23,9 +16,5 @@ begin
   RegisterPackageWizard(THorseNewControllerWizard.New);
   RegisterNewControllerBinding;
 end;
-
-initialization
-  bmSplashScreen := LoadBitmap(HInstance, 'HashloadSplash');
-  (SplashScreenServices as IOTASplashScreenServices).AddPluginBitmap(resPackageName, bmSplashScreen);
 
 end.
