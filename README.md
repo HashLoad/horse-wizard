@@ -12,6 +12,13 @@ This Wizard is compatible with projects developed in:
 - [ ] Lazarus
 
 
+## ⚙️ Demo and Installation
+<a href="https://www.youtube.com/watch?v=44gM_teUmzQ&list=PLN9ocnDzQL12myZz-uZ5X3fZ__4quBIAB
+" target="_blank"><img src="img/Horse-Wizard-Demo.png" 
+alt="Demo and Installation Horse Wizard" width="240" height="150"  /></a>
+
+
+
 ## Wizard
 ![horse-wizard](img/Horse-Wizard.png)
 
