@@ -31,7 +31,13 @@ begin
       try
         LCreator := THorseNewControllerCreator.New(LController);
         LModule := (BorlandIDEServices as IOTAModuleServices).CreateModule(LCreator);
-        RegisterController(LController, LModule);
+
+        LModule.FileName := Format('%sControllers.%s.pas',
+                                [ExtractFilePath(GetActiveProject.FileName),
+                                 LController.ControllerName]);
+
+        if LModule.Save(True, True) then
+          RegisterController(LController, LModule);
       finally
         LController.Free;
       end;
@@ -47,9 +53,11 @@ var
   I: Integer;
   LListenPosition: Integer;
   LEditView: IOTAEditView;
+  LUnitName: String;
 begin
   LListenPosition := 0;
   GetActiveProject.ShowFilename(GetActiveProject.FileName);
+  LUnitName := ChangeFileExt(ExtractFileName(AModule.FileName), EmptyStr);
 
   LEditorList := EditorAsStringList;
   try
@@ -67,7 +75,7 @@ begin
     begin
       LEditView.Buffer.EditPosition.GotoLine(LListenPosition + 1);
       LEditView.Buffer.EditPosition.Tab(1);
-      LEditView.Buffer.EditPosition.InsertText(AController.ControllerName + 'Registry;' + Chr(13));
+      LEditView.Buffer.EditPosition.InsertText(LUnitName + '.Registry;' + Chr(13));
     end;
 
     AModule.Show;
