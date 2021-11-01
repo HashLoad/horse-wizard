@@ -37,65 +37,18 @@ begin
   '' + sLineBreak +
   'uses' + sLineBreak +
   '  Horse;' + sLineBreak +
-  '' + sLineBreak +
-  'const' + sLineBreak +
-  '  ROUTE = ''%1:s'';' + sLineBreak +
-  '  ROUTE_ID = ''%1:s/:id'';' + sLineBreak +
   '' + sLineBreak;
 
-  if Self.Get then
-    Result := Result +
-      'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
-
-  if Self.GetById then
-    Result := Result +
-      'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
-
-  if Self.Post then
-    Result := Result +
-      'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
-
-  if Self.Put then
-    Result := Result +
-      'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
-
-  if Self.Delete then
-    Result := Result +
-      'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak;
-
   Result := Result +
-    '' + sLineBreak +
-    'procedure %0:sRegistry;' + sLineBreak +
+    'procedure Registry;' + sLineBreak +
     '' + sLineBreak +
     'implementation' + sLineBreak +
-    '' + sLineBreak +
-    'procedure %0:sRegistry;' + sLineBreak +
-    'begin' + sLineBreak +
-    '  THorse' + sLineBreak;
-
-  if Self.Get then
-    Result := Result + '    .Get(ROUTE, %0:sGet)' + sLineBreak;
-
-  if Self.Post then
-    Result := Result + '    .Post(ROUTE, %0:sPost)' + sLineBreak;
-
-  if Self.GetById then
-    Result := Result + '    .Get(ROUTE_ID, %0:sGetById)' + sLineBreak;
-
-  if Self.Put then
-    Result := Result + '    .Put(ROUTE_ID, %0:sPut)' + sLineBreak;
-
-  if Self.Delete then
-    Result := Result + '    .Delete(ROUTE_ID, %0:sDelete)' + sLineBreak;
-
-  Result := Result +
-    'end;' + sLineBreak +
     '' + sLineBreak;
 
   if Self.Get then
   begin
     Result := Result +
-      'procedure %0:sGet(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure DoGet%0:s(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
       'end;' + sLineBreak +
@@ -105,7 +58,7 @@ begin
   if Self.GetById then
   begin
     Result := Result +
-      'procedure %0:sGetById(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure DoGetById%0:s(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
       'begin' + sLineBreak +
@@ -118,7 +71,7 @@ begin
   if Self.Post then
   begin
     Result := Result +
-      'procedure %0:sPost(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure DoPost%0:s(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'begin' + sLineBreak +
       '' + sLineBreak +
       'end;' + sLineBreak +
@@ -128,7 +81,7 @@ begin
   if Self.Put then
   begin
     Result := Result +
-      'procedure %0:sPut(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+      'procedure DoPut%0:s(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
       'var' + sLineBreak +
       '  id: string;' + sLineBreak +
       'begin' + sLineBreak +
@@ -141,7 +94,7 @@ begin
   if Self.Delete then
   begin
     Result := Result +
-    'procedure %0:sDelete(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
+    'procedure DoDelete%0:s(Req: THorseRequest; Res: THorseResponse; Next: TProc);' + sLineBreak +
     'var' + sLineBreak +
     '  id: string;' + sLineBreak +
     'begin' + sLineBreak +
@@ -150,6 +103,30 @@ begin
     'end;' + sLineBreak +
     '' + sLineBreak;
   end;
+
+  Result := result +
+    'procedure Registry;' + sLineBreak +
+    'begin' + sLineBreak +
+    '  THorse' + sLineBreak;
+
+  if Self.Get then
+    Result := Result + '    .Get(''%1:s'', DoGet%0:s)' + sLineBreak;
+
+  if Self.Post then
+    Result := Result + '    .Post(''%1:s'', DoPost%0:s)' + sLineBreak;
+
+  if Self.GetById then
+    Result := Result + '    .Get(''%1:s/:id'', DoGetById%0:s)' + sLineBreak;
+
+  if Self.Put then
+    Result := Result + '    .Put(''%1:s/:id'', DoPut%0:s)' + sLineBreak;
+
+  if Self.Delete then
+    Result := Result + '    .Delete(''%1:s/:id'', DoDelete%0:s)' + sLineBreak;
+
+  Result := Result +
+    'end;' + sLineBreak +
+    '' + sLineBreak;
 
   Result := Result + 'end.';
   Result := Format(Result, [ControllerName, Route, AUnitName]);
