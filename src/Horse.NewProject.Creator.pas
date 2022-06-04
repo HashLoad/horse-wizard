@@ -5,8 +5,13 @@ interface
 uses DCCStrs, Horse.Wizard.Types, Horse.CodeGen.SourceFile, ToolsAPI, System.SysUtils;
 
 type
-  THorseNewProjectCreator = class(TNotifierObject, IOTACreator, IOTAProjectCreator, IOTAProjectCreator80, IOTAProjectCreator160,
-    IOTAProjectCreator190)
+  THorseNewProjectCreator = class(TNotifierObject, IOTACreator,
+                                                   IOTAProjectCreator80,
+                                                   IOTAProjectCreator160,
+                                                   {$IF CompilerVersion >= 32.0}
+                                                   IOTAProjectCreator190,
+                                                   {$ENDIF}
+                                                   IOTAProjectCreator)
   protected
     FPlatform: THorsePlatform;
     FFramework: THorseFramework;

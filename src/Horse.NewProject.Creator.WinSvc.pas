@@ -5,8 +5,13 @@ interface
 uses Horse.NewProject.Creator, Horse.NewProject.Creator.WinSvc.NewForm.Main, ToolsAPI;
 
 type
-  THorseNewProjectCreatorWinSvc = class(THorseNewProjectCreator, IOTACreator, IOTAProjectCreator, IOTAProjectCreator80,
-    IOTAProjectCreator160, IOTAProjectCreator190)
+  THorseNewProjectCreatorWinSvc = class(THorseNewProjectCreator, IOTACreator,
+                                                                 IOTAProjectCreator80,
+                                                                 IOTAProjectCreator160,
+                                                                 {$IF CompilerVersion >= 32.0}
+                                                                 IOTAProjectCreator190,
+                                                                 {$ENDIF}
+                                                                 IOTAProjectCreator)
   protected
     procedure SetInitialOptions(const ANewProject: IOTAProject); override;
   end;

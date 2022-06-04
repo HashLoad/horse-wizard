@@ -5,8 +5,13 @@ interface
 uses Horse.NewProject.Creator, Horse.NewProject.Creator.Vcl.NewForm.Main, ToolsAPI;
 
 type
-  THorseNewProjectCreatorVcl = class(THorseNewProjectCreator, IOTACreator, IOTAProjectCreator, IOTAProjectCreator80,
-    IOTAProjectCreator160, IOTAProjectCreator190)
+  THorseNewProjectCreatorVcl = class(THorseNewProjectCreator, IOTACreator,
+                                                              IOTAProjectCreator80,
+                                                              IOTAProjectCreator160,
+                                                              {$IF CompilerVersion >= 32.0}
+                                                              IOTAProjectCreator190,
+                                                              {$ENDIF}
+                                                              IOTAProjectCreator)
   protected
     procedure SetInitialOptions(const ANewProject: IOTAProject); override;
   end;
