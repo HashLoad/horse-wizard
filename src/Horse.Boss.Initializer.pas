@@ -2,7 +2,8 @@ unit Horse.Boss.Initializer;
 
 interface
 
-uses ToolsAPI, Horse.Middlewares, System.Generics.Collections, System.Classes;
+uses ToolsAPI, Horse.Middlewares, System.Generics.Collections, System.Classes,
+  Horse.Views.Boss, DosCommand;
 
 type
   THorseBossInitializer = class
@@ -10,9 +11,15 @@ type
     FProject: IOTAProject;
     FModules: TList<IHorseMiddleware>;
     FLocked: Boolean;
+    LBossView  : TFrmBoss;
+    LDosCommand: TDosCommand;
+
     function GetDependencies: string;
     procedure RunBossInstall;
     procedure ReloadProject;
+    procedure OnNewLineEvent(ASender: TObject; const ANewLine: string;
+      AOutputType: TOutputType);
+    procedure OnTerminatedEvent(ASender: TObject);
   public
     constructor Create(const AProject: IOTAProject; const AModules: TList<IHorseMiddleware>);
     procedure Generate;
@@ -21,7 +28,7 @@ type
 
 implementation
 
-uses System.SysUtils, System.IOUtils, DosCommand, Horse.Views.Boss, Vcl.Forms;
+uses System.SysUtils, System.IOUtils, Vcl.Forms;
 
 const
   HORSE_MODULE = 'github.com/HashLoad/horse';
@@ -89,36 +96,36 @@ begin
   FProject.Refresh(False);
 end;
 
+procedure THorseBossInitializer.OnNewLineEvent(ASender: TObject; const ANewLine: string; AOutputType: TOutputType);
+begin
+  LBossView.AppendText(ANewLine);
+end;
+
+procedure THorseBossInitializer.OnTerminatedEvent(ASender: TObject);
+begin
+  LDosCommand.Free;
+
+  TThread.Queue(nil,
+    procedure
+    begin
+      LBossView.Close;
+      LBossView.Free;
+    end);
+  ReloadProject;
+  FLocked := False;
+end;
+
 procedure THorseBossInitializer.RunBossInstall;
-var
-  LDosCommand: TDosCommand;
-  LBossView: TFrmBoss;
 begin
   LDosCommand := TDosCommand.Create(nil);
-  LBossView := TFrmBoss.Create(nil);
-  LDosCommand.OnNewLine :=
-    procedure(ASender: TObject; const ANewLine: string; AOutputType: TOutputType)
-    begin
-      LBossView.AppendText(ANewLine);
-    end;
+  LBossView   := TFrmBoss.Create(nil);
 
-  LDosCommand.OnTerminated :=
-    procedure(ASender: TObject)
-    begin
-      LDosCommand.Free;
-      TThread.Queue(nil,
-        procedure
-        begin
-          LBossView.Close;
-          LBossView.Free;
-        end);
-      ReloadProject;
-      FLocked := False;
-    end;
+  LDosCommand.OnNewLine    := OnNewLineEvent;
+  LDosCommand.OnTerminated := OnTerminatedEvent;
 
   LDosCommand.InputToOutput := False;
-  LDosCommand.CurrentDir := ExtractFilePath(FProject.FileName);
-  LDosCommand.CommandLine := BOSS_COMMAND;
+  LDosCommand.CurrentDir    := ExtractFilePath(FProject.FileName);
+  LDosCommand.CommandLine   := BOSS_COMMAND;
   LDosCommand.Execute;
   LBossView.Show;
 end;
