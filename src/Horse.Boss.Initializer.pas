@@ -71,7 +71,7 @@ begin
     LFile.Text := LContent;
     LFile.SaveToFile(TPath.Combine(ExtractFilePath(FProject.FileName), BOSS_NAME));
   finally
-    LFile.DisposeOf;
+    LFile.Free;
   end;
 
   RunBossInstall;
