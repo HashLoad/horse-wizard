@@ -1,6 +1,6 @@
 # Horse Wizard
 
-<b>Horse-wizard</b> is a wizard for creating new Horse applications. Easy, fast and simple. A tool to make your work easier!
+<b>Horse-wizard</b> is a wizard for creating new [Horse](https://github.com/HashLoad/horse) applications. Easy, fast and simple. A tool to make your work easier!
 <br>We created a channel on Telegram for questions and support:<br><br>
 <a href="https://t.me/hashload">
   <img src="https://img.shields.io/badge/telegram-join%20channel-7289DA?style=flat-square">
