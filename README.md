@@ -6,6 +6,12 @@
   <img src="https://img.shields.io/badge/telegram-join%20channel-7289DA?style=flat-square">
 </a>
 
+
+## ⭕ Prerequisites
+##### Delphi
+- [**TurboPack DOSCommand**](https://github.com/TurboPack/DOSCommand) - Let's you execute dos programs (exe, com or batch file) and capture the output.
+
+
 ## ✔️ Compatibility
 This Wizard is compatible with projects developed in:
 - [X] Delphi
